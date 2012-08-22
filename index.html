@@ -1,141 +1,66 @@
 <!doctype html>
 <html>
-<head>
-	<title>Ask Around</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link type="text/css" rel="stylesheet" href="css/index.css" />-->
-	
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	
-	<script type="text/javascript" src="js/third-party/lscache.js"></script>
-	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
-	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
-	
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.js"></script>
-
-	<script type="text/javascript" src="js/jPaginate.js"></script>
-
-	<script type="text/javascript">
-	
-	$(document).ready(function(){
-		// to get the playlist url https://gdata.youtube.com/feeds/api/users/userId/playlists?v=2
-		// change orderby: https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#orderbysp
-		//var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&orderby=published&callback=?';
-		var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&callback=?';
-		var videoURL= 'http://www.youtube.com/watch?v=';
-		$.getJSON(playListURL, function(data) {
-			
-			// get the first video from the playlist and put it in .feature
-			var list_data="";
-			$.each(data.feed.entry, function(i, item) {
-				if(i>0){return;}
-				var feedTitle = item.title.$t;
-				var feedURL = item.link[1].href;
-				var fragments = feedURL.split("/");
-				var videoID = fragments[fragments.length - 2];
-				var url = videoURL + videoID;
-				list_data += '<iframe id="mainvideoplayer" width="560" height="315" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
-				
-			});
-			$(list_data).appendTo(".feature");
-			
-			//testing changing the iframe src
-			//$('#mainvideoplayer').attr('src', 'http://www.youtube.com/embed/zX9HpsCVC9s');
-			
-			// get all the playlist video thumbnails and put it in .thumbs
-			var list_data="";
-			$.each(data.feed.entry, function(i, item) {
-				var feedTitle = item.title.$t;
-				var feedURL = item.link[1].href;
-				var fragments = feedURL.split("/");
-				var videoID = fragments[fragments.length - 2];
-				//var url = videoURL + videoID;
-				var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
-				// different sizes for video thumbs: default, hqdefault, mqdefault
-				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
-				list_data += '<a class="videogridthumb" href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a>';
-			});
-			$(list_data).appendTo("#thumbs");
-			
-			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
-			$('.videogridthumb').click(function() {
-				var embedsrc = $(this).attr('href');
-				$('#mainvideoplayer').attr('src', embedsrc);
-				//$('#mainvideoplayer').play();
-				return false;
-			});
-			
-			//Pagination
-			
-			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
-			
-		});
-	
-	});
-	
-	</script>
-	
-</head>
-<body>
-	
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="#">Ask Around</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-				<li><a href="#other">Other</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
-	
-	<div class="container">
-	
-		<div class="uploadvideos">
-		
-			<iframe width="560" height="450" src="./index.html#playlist=7E95C5FA9C85F48E"></iframe>
-			
-		</div>
-		
-		<div class="feature"></div>
-		
-		<div id="thumbs"></div>
-	
-	</div>
-	
-	<footer>
-			
-		<div class="row-fluid">
-			
-			<div class="span2"><p>Logo</p></div>
-			
-			<div class="span8"><p>Text</p></div>
-			
-			<div class="span2"><p>Links</p></div>
-		
-		</div>
-	
-	</footer>
-	
-	<!--Bootstrap Script-->
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	
-</body>
+  <head>
+    <title>YouTube Direct Lite</title>
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript" src="js/third-party/lscache.js"></script>
+    <script type="text/javascript" src="js/third-party/parseUri.js"></script>
+    <script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
+  </head>
+  <body>
+    <div id="header" class="hidden login-required">
+      <img id="profile-picture"/>
+      <span id="display-name"></span>
+      <a id="logout" data-state="logout">Logout</a>
+    </div>
+    <div id="login-panel" class="hidden panel">
+      <div>Please <a id="login">login</a> to submit your video.</div>
+    </div>
+    <ul id="tabs" class="hidden login-required">
+      <li data-state="upload">Upload</li>
+      <li data-state="existing">My YouTube Videos</li>
+      <li data-state="webcam">Webcam</li>
+    </ul>
+    <div id="message" class="hidden"></div>
+    <div id="existing-panel" class="hidden panel">
+      <ul id="existing-videos"></ul>
+    </div>
+    <div id="upload-panel" class="hidden panel">
+      <form id="upload-form" enctype="multipart/form-data" method="POST">
+        <div id="title-container" class="hidden">
+          <label for="title">Title</label>
+          <input id="title" type="text" class="wide" maxlength="90" required/>
+        </div>
+        <div id="description-container" class="hidden">
+          <label for="description">Description</label>
+          <textarea id="description" type="text" class="wide" maxlength="1000" required></textarea>
+        </div>
+        <div id="category-container" class="hidden">
+          <label for="category">Category</label>
+          <select id="category" class="wide"></select>
+        </div>
+        <div>
+          <label for="file">Video File</label>
+          <input id="file" name="file" type="file" required/>
+        </div>
+        <div>
+          <input id="upload" type="button" value="Upload" disabled/>
+        </div>
+        <div id="tos">
+          By clicking 'upload,' you certify that you own all rights to the content or that you are
+          authorized by the owner to make the content publicly available on YouTube, and that it
+          otherwise complies with the YouTube Terms of Service located at
+          <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a>.
+        </div>
+      </form>
+    </div>
+    <div id="postupload-panel" class="hidden panel">
+      <div id="upload-success" class="hidden">
+        Your <a id="youtube-link" target="_blank">video</a> was successfully submitted.
+      </div>
+    </div>
+    <div id="webcam-panel" class="hidden panel">
+      <div id="webcam-widget"></div>
+    </div>
+  </body>
 </html>
