@@ -41,7 +41,7 @@
 				var fragments = feedURL.split("/");
 				var videoID = fragments[fragments.length - 2];
 				var url = videoURL + videoID;
-				list_data += '<iframe id="mainvideoplayer" width="100%" height="450" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				list_data += '<iframe id="mainvideoplayer" width="870" height="450" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
 				
 			});
 			$(list_data).appendTo(".feature");
@@ -65,7 +65,7 @@
 			$(list_data).appendTo("#thumbs");
 			
 			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
-			$('.videogridthumb').click(function() {
+			$('ul#thumbs li a').click(function() {
 				var embedsrc = $(this).attr('href');
 				$('#mainvideoplayer').attr('src', embedsrc);
 				//$('#mainvideoplayer').play();
