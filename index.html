@@ -41,7 +41,7 @@
 				var fragments = feedURL.split("/");
 				var videoID = fragments[fragments.length - 2];
 				var url = videoURL + videoID;
-				list_data += '<iframe id="mainvideoplayer" width="560" height="315" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				list_data += '<iframe id="mainvideoplayer" width="100%" height="450" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
 				
 			});
 			$(list_data).appendTo(".feature");
@@ -60,7 +60,7 @@
 				var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
 				// different sizes for video thumbs: default, hqdefault, mqdefault
 				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
-				list_data += '<a class="videogridthumb" href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a>';
+				list_data += '<li><a href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
 			});
 			$(list_data).appendTo("#thumbs");
 			
@@ -106,29 +106,32 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid">
-		<div class="hero-unit span8 offset3">
-			<h1>What's your big questions?</h1>
+	<div class="container">
+		<div class="hero-unit center">
+			<h1>What's your big question?</h1>
 			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue</p>
 		</div>
 		<div class="uploadvideos center">
 			<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
 				Ask your question
 			</a>
-			<section id="uploadFrame" class="collapse">
-				<p> If this doesn't work, head over to youtube.com</p>
+			<section id="uploadFrame" class="collapse center">
+				<div class="span8">	
+					<p> If this doesn't work, head over to youtube.com</p>
 				
-			<iframe width="100%" height="450" src="./youtube-direct-lite2/static/index.html#playlist=7E95C5FA9C85F48E">
+					<iframe width="100%" height="450" src="./youtube-direct-lite2/static/index.html#playlist=7E95C5FA9C85F48E">
 				
-			</iframe>
+					</iframe>
+				</div>
+			</div>
+		<div class="row">
+			<div class ="span9">
+				<div class="feature"></div>
+				<ul id="thumbs"></ul>
 			</div>
 		</div>
-		
-		<div class="feature"></div>
-		
-		<div id="thumbs"></div>
 	
-	</div>
+	</div> <!--container-->
 	
 	<footer>
 			

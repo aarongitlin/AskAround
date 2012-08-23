@@ -3,9 +3,11 @@
 
 body {
 	margin-top: 50px;
+	text-align: left;
+	
 }
 .container {
-	width: 560px;
+	max-width: 870px;
 }
 
 .center {
@@ -15,43 +17,63 @@ body {
 
 .hero-unit {
 	background: none;
+	padding-left: 10px;
+	padding-right:10px;
 }
 .hero-unit p {
 	margin-right: 20px;
+	padding-top: 10px;
 }
-/* @group Upload */
 
 .uploadvideos {
 	margin: 50px auto 50px;
 }
+.uploadvideos a.btn {
+	font-size: 36px;
+	
+}
+/* @group Upload */
 
-.uploadvideos iframe {
+#uploadFrame {
+	margin-top: 20px;
+}
+
+#uploadFrame iframe {
 	border: none;
 }
 
 /* @end */
 
 .feature {
-	height: 315px;
+	width: 100%;
 	margin-bottom: 10px;
 }
 
 /* @group Thumbs and pagination */
 
-#thumbs {
-	margin-right: -10px;
+ul#thumbs {
+	margin: 30px 0 10px auto;
+	width:100%;
+	list-style: none;
+}
+ul#thumbs li {
+	float: left;
+}
+ul#thumbs li a {
+	margin-right: -5px;
+}
+ul#thumbs li img {
+	width:280px;
+	margin-right:20px;
+	margin-bottom: 20px;
 }
 
-.thumbscontainer {
-	margin-right: -10px;
+ul#thumbs li:nth-child(3n+3) {
+	margin-right: 0;
 }
-
-.videogridthumb img {
-	width: 180px;
-	margin-right: 10px;
-	margin-bottom: 10px;
+ul#thumbs li:nth-child(3n+3) a {
+	margin-right: -20px;
 }
-
 .pagination .active {
 	color: silver;
 	background-color: #dddddd;
