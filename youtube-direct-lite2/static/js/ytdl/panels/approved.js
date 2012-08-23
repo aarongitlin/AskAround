@@ -20,21 +20,16 @@ define(['jquery', '../utils', '../constants', '../globals'], function($, utils, 
     init: function() {
       $('body').on({
         click: function() {
-          $(this).attr('disabled', true);
-          utils.addVideoToPlaylist(globals.hashParams.playlist, $(this).attr('data-video-id'));
-
-          window._gaq.push(['_trackEvent', 'Admin', 'Approve']);
-        }
-      }, '#pending-panel input.approve');
-
-      $('body').on({
-        click: function() {
-          $(this).attr('disabled', true);
-          utils.addVideoToPlaylist(globals.rejectedPlaylistId, $(this).attr('data-video-id'));
+          var button = $(this);
+          button.attr('disabled', true);
+          utils.addVideoToPlaylist(globals.rejectedPlaylistId, button.attr('data-video-id'));
+          utils.removeVideoFromPlaylist(button.attr('data-edit-url'));
 
           window._gaq.push(['_trackEvent', 'Admin', 'Reject']);
+
+          utils.animateModeration($(this).closest('li'), $('li[data-state=rejected]'));
         }
-      }, '#pending-panel input.reject');
+      }, '#approved-panel input.reject');
     },
     display: function() {
       $('#tabs').show();
@@ -45,18 +40,22 @@ define(['jquery', '../utils', '../constants', '../globals'], function($, utils, 
           if (state) {
             var lis = [];
 
-            $.each(state.pendingIds, function() {
+            $.each(state.approvedIds, function() {
               var metadata = state.videoIdToMetadata[this];
               if (metadata) {
-                metadata.buttonsHtml = utils.format('<input type="button" class="approve" value="Approve" data-video-id="{0}"><input type="button" class="reject" value="Reject" data-video-id="{0}">', this);
+                var editUrl = state.videoIdToPlaylistEntryId[this];
+                metadata.buttonsHtml = utils.format('<input type="button" class="reject" value="Reject" data-video-id="{videoId}" data-edit-url="{editUrl}">', {
+                  videoId: this,
+                  editUrl: editUrl
+                });
 
                 lis.push(utils.format(constants.ADMIN_VIDEO_LI_TEMPLATE, metadata));
               }
             });
 
-            $('#pending-videos').html(lis.join(''));
+            $('#approved-videos').html(lis.join(''));
 
-            $('#moderation-message').text(utils.format('{0} {1} pending moderation.', lis.length, lis.length == 1 ? 'video is' : 'videos are')).show();
+            $('#moderation-message').text(utils.format('{0} {1} approved.', lis.length, lis.length == 1 ? 'video is' : 'videos are')).show();
           } else {
             utils.showMessage(utils.format('Unable to determine submission state. Is the "{0}" playlist missing?', constants.REJECTED_VIDEOS_PLAYLIST));
           }

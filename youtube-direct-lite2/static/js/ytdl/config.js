@@ -35,4 +35,3 @@ define({
   // See https://developers.google.com/youtube/2.0/reference#YouTube_Category_List
   //,VIDEO_CATEGORY: 'People'
 });
-
