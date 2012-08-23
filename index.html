@@ -76,6 +76,8 @@
 			
 			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
 			
+			$("ul.pagination").before('<hr />');
+			
 		});
 	
 	});
@@ -111,6 +113,7 @@
 			<h1>What's your big question?</h1>
 			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue</p>
 		</div>
+		<hr />
 		<div class="uploadvideos center">
 			<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
 				Ask your question
@@ -124,10 +127,12 @@
 					</iframe>
 				</div>
 			</div>
+			<hr />
 		<div class="row">
 			<div class ="span9">
 				<div class="feature"></div>
-				<ul id="thumbs"></ul>
+				<ul id="thumbs">
+				</ul>				
 			</div>
 		</div>
 	

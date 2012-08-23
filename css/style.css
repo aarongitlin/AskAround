@@ -125,7 +125,20 @@ ul#thumbs li:nth-child(3n+3) a {
 
 
 footer {
-	background-color: silver;
+	background-color: #364449;
 	padding: 50px;
+	color: white;
+	position: relative;
+}
+hr {
+	border-top: 2px solid #eeeeee;
+	border-bottom: 2px solid #ffffff;
 }
 
+/* @responsive edits */
+@media (max-width: 979px) {
+	body {
+		padding-top: 0;
+		
+	}
+}
