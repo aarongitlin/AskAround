@@ -13,6 +13,12 @@ body {
 	margin: auto;
 }
 
+.hero-unit {
+	background: none;
+}
+.hero-unit p {
+	margin-right: 20px;
+}
 /* @group Upload */
 
 .uploadvideos {
