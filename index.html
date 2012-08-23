@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+	<title>Ask Around</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link type="text/css" rel="stylesheet" href="css/index.css" />-->
+	
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<script type="text/javascript" src="js/third-party/lscache.js"></script>
+	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
+	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
+	
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<script type="text/javascript" src="js/jPaginate.js"></script>
+
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		// to get the playlist url https://gdata.youtube.com/feeds/api/users/userId/playlists?v=2
+		// change orderby: https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#orderbysp
+		//var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&orderby=published&callback=?';
+		var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&callback=?';
+		var videoURL= 'http://www.youtube.com/watch?v=';
+		$.getJSON(playListURL, function(data) {
+			
+			// get the first video from the playlist and put it in .feature
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				if(i>0){return;}
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				var url = videoURL + videoID;
+				list_data += '<iframe id="mainvideoplayer" width="870" height="450" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				
+			});
+			$(list_data).appendTo(".feature");
+			
+			//testing changing the iframe src
+			//$('#mainvideoplayer').attr('src', 'http://www.youtube.com/embed/zX9HpsCVC9s');
+			
+			// get all the playlist video thumbnails and put it in .thumbs
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				//var url = videoURL + videoID;
+				var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
+				// different sizes for video thumbs: default, hqdefault, mqdefault
+				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
+				list_data += '<li><a href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
+			});
+			$(list_data).appendTo("#thumbs");
+			
+			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
+			$('ul#thumbs li a').click(function() {
+				var embedsrc = $(this).attr('href');
+				$('#mainvideoplayer').attr('src', embedsrc);
+				//$('#mainvideoplayer').play();
+				return false;
+			});
+			
+			//Pagination
+			
+			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
+			
+			$("ul.pagination").before('<hr />');
+			
+		});
+	
+	});
+	
+	</script>
+	
+</head>
+<body>
+	
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="#">Ask Around</a>
+			<div class="nav-collapse">
+				<ul class="nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#other">Other</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="container main">
+		<div class="hero-unit center">
+			<h1>What's your big question?</h1>
+			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue</p>
+		</div>
+		<hr />
+		<div class="uploadvideos center">
+			<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
+				Ask your question
+			</a>
+			<section id="uploadFrame" class="collapse center">
+				<div class="span8">	
+					<p> If this doesn't work, head over to youtube.com</p>
+				
+					<iframe width="100%" height="450" src="./youtube-direct-lite2/static/index.html#playlist=7E95C5FA9C85F48E">
+				
+					</iframe>
+				</div>
+			</div>
+			<hr />
+		<div class="row">
+			<div class ="span9">
+				<div class="feature"></div>
+				<ul id="thumbs">
+				</ul>				
+			</div>
+		</div>
+	
+	</div> <!--container-->
+	
+	<footer>
+		<div class="container">
+			
+			<div class="row-fluid">
+			
+				<div class="span2"><p>Logo</p></div>
+			
+				<div class="span8"><p>Text</p></div>
+			
+				<div class="span2"><p>Links</p></div>
+		
+			</div>
+		</div>
+	</footer>
+	
+	<!--Bootstrap Script-->
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(".collapse").collapse();
+	
+</body>
+</html>

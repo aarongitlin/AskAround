@@ -1,0 +1,144 @@
+/* @override 
+	http://localhost:8888/bigquestionapp/youtube-direct-lite/youtube-direct-lite/static/css/style.css */
+@import url(http://fonts.googleapis.com/css?family=Varela|Varela+Round);
+
+body {
+	padding-top: 50px;
+	text-align: left;
+	font-family: "Varela", "sans-serif";
+	font-size: 16px;
+	background-color: whitesmoke;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+	background-image: -webkit-repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+h1 {
+	font-family: "Varela Round", "sans-serif";
+}
+.container.main {
+	max-width: 870px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: rgba(255,255,255,0.5);
+	position: relative;
+	z-index: 0;
+	box-shadow: 0 0 40px rgba(255,255,255,0.5);
+	
+}
+
+.navbar-fixed-top .navbar-inner {
+	box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
+	-moz-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.25), 0 1px 10px rgba(0,160,220,0.25);
+	background-color: rgba(0,160,220,1.0);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
+	background-image: -webkit-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
+	background-image: -moz-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
+	background-image: -o-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
+	background-image: linear-gradient(to bottom, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
+	
+	min-height: 50px;
+	
+}
+.navbar .nav > li > a {
+	color: white;
+	text-shadow: none;
+	padding: 15px;
+}
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, 
+.navbar .nav > .active > a:focus {
+	background-color: #8cc8dc;
+}
+.center {
+	text-align: center;
+	margin: auto;
+}
+
+.hero-unit {
+	background: none;
+	padding-left: 10px;
+	padding-right:10px;
+}
+.hero-unit p {
+	margin-right: 20px;
+	padding-top: 10px;
+	font-family: "Dosis", "Helvetica";
+}
+
+.uploadvideos {
+	margin: 50px auto 50px;
+}
+.uploadvideos a.btn {
+	font-size: 36px;
+	
+}
+/* @group Upload */
+
+#uploadFrame {
+	margin-top: 20px;
+}
+
+#uploadFrame iframe {
+	border: none;
+}
+
+/* @end */
+
+.feature {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+/* @group Thumbs and pagination */
+
+ul#thumbs {
+	margin: 30px 0 10px auto;
+	width:100%;
+	list-style: none;
+	display: inline-block;
+}
+ul#thumbs li {
+	float: left;
+}
+ul#thumbs li a {
+	margin-right: -5px;
+}
+ul#thumbs li img {
+	width:280px;
+	margin-right:20px;
+	margin-bottom: 20px;
+}
+
+ul#thumbs li:nth-child(3n+3) {
+	margin-right: 0;
+}
+ul#thumbs li:nth-child(3n+3) a {
+	margin-right: -20px;
+}
+.pagination .active {
+	color: silver;
+	background-color: #dddddd;
+}
+
+
+/* @end */
+
+
+
+footer {
+	background-color: #364449;
+	padding: 50px;
+	color: white;
+	position: relative;
+}
+hr {
+	border-top: 2px solid #eeeeee;
+	border-bottom: 2px solid #ffffff;
+}
+
+/* @responsive edits */
+@media (max-width: 979px) {
+	body {
+		padding-top: 0;
+		
+	}
+}
