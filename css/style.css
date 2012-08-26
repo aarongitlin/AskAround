@@ -2,11 +2,6 @@
 	http://localhost:8888/bigquestionapp/youtube-direct-lite/youtube-direct-lite/static/css/style.css */
 @import url(http://fonts.googleapis.com/css?family=Varela|Varela+Round);
 
-//hi aaron
-// whats up finn
-
-//hi aaron how are you
-
 body {
 	padding-top: 50px;
 	text-align: left;
@@ -18,6 +13,7 @@ body {
 }
 h1 {
 	font-family: "Varela Round", "sans-serif";
+	font-weight: normal;
 }
 .container.main {
 	max-width: 870px;
@@ -30,17 +26,16 @@ h1 {
 	
 }
 
-.navbar-fixed-top .navbar-inner {
+.navbar-inner {
 	box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
 	-webkit-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
 	-moz-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.25), 0 1px 10px rgba(0,160,220,0.25);
 	background-color: rgba(0,160,220,1.0);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
 	background-image: -webkit-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
-	background-image: -moz-linear-gradient(top, 0 0, 0 100%, #46b4dc, #00a0dc);
+	background-image: -moz-linear-gradient(center top , #46b4dc, #00a0dc);
 	background-image: -o-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
 	background-image: linear-gradient(to bottom, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
-	
 	min-height: 50px;
 	
 }
