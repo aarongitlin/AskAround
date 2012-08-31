@@ -4,6 +4,12 @@
 	<title>Ask Around</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="css/index.css" />-->
+	<meta property="og:title" content="ShareThis Homepage" />
+	<meta property="og:type" content="Sharing Widgets" />
+	<meta property="og:url" content="http://sharethis.com" />
+	<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
+	<meta property="og:description" content="Sharing is great!" />
+	<meta property="og:site_name" content="ShareThis" />
 	
 	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -80,7 +86,6 @@
 			
 			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
 			
-			$("ul.pagination").before('<hr />');
 			
 		});
 	
@@ -138,6 +143,8 @@
 			</div>
 		</div>
 		
+		<hr />
+		
 		<div class="row">
 			<div class="span9">
 				<div class ="sharing">
@@ -150,7 +157,28 @@
 			</div>
 		</div>
 	
-	</div> <!--end container-->
+	<hr />
+	
+			<div class="row">
+				<div class="span9">
+					<div class ="email">
+						<!-- Begin MailChimp Signup Form -->
+						<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+					
+						<div id="mc_embed_signup">
+						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+							<label for="mce-EMAIL">Subscribe to our mailing list</label>
+							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+							<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+						</form>
+						</div>
+
+						<!--End mc_embed_signup-->
+					</div>
+				</div>
+			</div>
+		
+		</div> <!--end container-->
 	
 	<footer>
 		<div class="container">

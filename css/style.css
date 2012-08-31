@@ -72,15 +72,22 @@ h1 {
 .uploadvideos {
 	margin: 50px auto 50px;
 }
+.uploadvideos a.btn {
+	font-size: 36px;
+	margin-top: 40px;
+	
+}
 .uploadvideos::before {
 	content: url('../images/video-button.png');
 	position: relative;
 	width:0px;
 	height:0px;
 	display: block;
-	left: -160px;
-	float: left;
 	margin-top: -40px;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -55px;
 }
 .feature::before {
 	content: url('../images/watch-button.png');
@@ -88,14 +95,25 @@ h1 {
 	width:0px;
 	height:0px;
 	display: block;
-	left: -160px;
-	float: left;
-	margin-top: 140px;
+	margin-top: -40px;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -85px;
 }
-.uploadvideos a.btn {
-	font-size: 36px;
-	
+.sharing::before {
+	content: url('../images/share-button.png');
+	position: relative;
+	width:0px;
+	height:0px;
+	display: block;
+	margin-top: -40px;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -85px;
 }
+
 img.icon {
 	height: 24px;
 }
@@ -114,6 +132,7 @@ img.icon {
 .feature {
 	width: 100%;
 	margin-bottom: 10px;
+	margin-top: 60px;
 }
 
 /* @group Thumbs and pagination */
@@ -147,9 +166,12 @@ ul#thumbs li:nth-child(3n+3) a {
 	background-color: #dddddd;
 }
 
-
 /* @end */
 
+/* @sharing */
+.sharing {
+	margin-top: 60px;
+}
 
 
 footer {
