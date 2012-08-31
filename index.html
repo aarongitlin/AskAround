@@ -4,6 +4,12 @@
 	<title>Ask Around</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="css/index.css" />-->
+	<meta property="og:title" content="ShareThis Homepage" />
+	<meta property="og:type" content="Sharing Widgets" />
+	<meta property="og:url" content="http://sharethis.com" />
+	<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
+	<meta property="og:description" content="Sharing is great!" />
+	<meta property="og:site_name" content="ShareThis" />
 	
 	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -21,7 +27,11 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 	<script type="text/javascript" src="js/jPaginate.js"></script>
-
+	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<!-- widgets from sharthis.com -->
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98"}); </script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -76,7 +86,6 @@
 			
 			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
 			
-			$("ul.pagination").before('<hr />');
 			
 		});
 	
@@ -95,13 +104,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#">Ask Around</a>
+			<a class="brand" href="#"><img class="logo" src="images/logo_white.png" /></a>
 			<div class="nav-collapse">
 				<ul class="nav">
-				<li class="active"><a href="#">Home</a></li>
 				<li><a href="#about">About</a></li>
 				<li><a href="#contact">Contact</a></li>
-				<li><a href="#other">Other</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 			</div>
@@ -116,7 +123,7 @@
 		<hr />
 		<div class="uploadvideos center">
 			<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
-				Ask your question
+				Record your question
 			</a>
 			<section id="uploadFrame" class="collapse center">
 				<div class="span8">	
@@ -135,8 +142,43 @@
 				</ul>				
 			</div>
 		</div>
+		
+		<hr />
+		
+		<div class="row">
+			<div class="span9">
+				<div class ="sharing">
+					<span class='st_facebook_vcount' displayText='Facebook'></span>
+					<span class='st_twitter_vcount' displayText='Tweet' st_title="I asked a question at AskAround"></span>
+					<span class='st_linkedin_vcount' displayText='LinkedIn'></span>
+					<span class='st_googleplus_vcount' displayText='Google +'></span>
+					<span class='st_email_vcount' displayText='Email'></span>
+				</div>
+			</div>
+		</div>
 	
-	</div> <!--container-->
+	<hr />
+	
+			<div class="row">
+				<div class="span9">
+					<div class ="email">
+						<!-- Begin MailChimp Signup Form -->
+						<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+					
+						<div id="mc_embed_signup">
+						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+							<label for="mce-EMAIL">Subscribe to our mailing list</label>
+							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+							<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+						</form>
+						</div>
+
+						<!--End mc_embed_signup-->
+					</div>
+				</div>
+			</div>
+		
+		</div> <!--end container-->
 	
 	<footer>
 		<div class="container">
