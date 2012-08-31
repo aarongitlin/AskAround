@@ -3,7 +3,7 @@
 <head>
 	<title>Ask Around</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link type="text/css" rel="stylesheet" href="css/index.css" />-->
+	<link type="text/css" rel="stylesheet" href="css/index.css" />
 	<meta property="og:title" content="ShareThis Homepage" />
 	<meta property="og:type" content="Sharing Widgets" />
 	<meta property="og:url" content="http://sharethis.com" />
@@ -28,10 +28,15 @@
 
 	<script type="text/javascript" src="js/jPaginate.js"></script>
 	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+	<!-- widgets from sharthis.com 
 	<script type="text/javascript">var switchTo5x=true;</script>
-	<!-- widgets from sharthis.com -->
 	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript">stLight.options({publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98"}); </script>
+	<script type="text/javascript">stLight.options({
+		publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98",
+		newOrZero:"zero"
+		}); 
+	</script>-->
+	
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -148,11 +153,28 @@
 		<div class="row">
 			<div class="span9">
 				<div class ="sharing">
-					<span class='st_facebook_vcount' displayText='Facebook'></span>
-					<span class='st_twitter_vcount' displayText='Tweet' st_title="I asked a question at AskAround"></span>
-					<span class='st_linkedin_vcount' displayText='LinkedIn'></span>
-					<span class='st_googleplus_vcount' displayText='Google +'></span>
-					<span class='st_email_vcount' displayText='Email'></span>
+					<!-- AddThis Button BEGIN -->
+					<div class ="span9 center">
+						<h2>Say something about us!</h2>
+					<div class="addthis_toolbox addthis_default_style">
+					<a class="addthis_button_preferred_1"><img src='images/twitter_icon.png' /><span class="twitter-title">twitter</span></a>
+					
+					<a class="addthis_button_preferred_2" tw:text="I submitted a video at http://askaroundtheworld.com"><img src='images/facebook_icon.png' /><span class="facebook-title">facebook</span></a>
+					
+					</div>
+					<div class="span9 center">
+					<h3>Like and follow us!</h3>
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					<a class="addthis_button_twitter_follow_native" tw:screen_name="lovesyoudesign"/>
+					<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
+					</div>
+					</div>
+					<script type="text/javascript">
+						var addthis_config = {"data_track_addressbar":true};
+							
+						</script>
+					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5040256a7f6b27b6"></script>
+					<!-- AddThis Button END -->
 				</div>
 			</div>
 		</div>
@@ -161,15 +183,14 @@
 	
 			<div class="row">
 				<div class="span9">
-					<div class ="email">
+					<div class ="email center">
 						<!-- Begin MailChimp Signup Form -->
-						<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-					
 						<div id="mc_embed_signup">
 						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 							<label for="mce-EMAIL">Subscribe to our mailing list</label>
 							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-							<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+							<div class="clear">
+								<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 						</form>
 						</div>
 

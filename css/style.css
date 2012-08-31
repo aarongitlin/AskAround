@@ -71,6 +71,7 @@ h1 {
 
 .uploadvideos {
 	margin: 50px auto 50px;
+	padding-bottom: 20px;
 }
 .uploadvideos a.btn {
 	font-size: 36px;
@@ -113,6 +114,17 @@ h1 {
 	left: -40px;
 	top: -85px;
 }
+.email::before {
+	content: url('../images/email-button.png');
+	position: relative;
+	width:0px;
+	height:0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -125px;
+}
 
 img.icon {
 	height: 24px;
@@ -121,6 +133,9 @@ img.icon {
 
 #uploadFrame {
 	margin-top: 20px;
+	border: 5px solid lightgray;
+	background-color: #f6f6f6;
+	
 }
 
 #uploadFrame iframe {
@@ -171,8 +186,65 @@ ul#thumbs li:nth-child(3n+3) a {
 /* @sharing */
 .sharing {
 	margin-top: 60px;
+	display: inline-block;
+	padding-bottom: 30px;
+}
+.addthis_default_style .addthis_separator, 
+.addthis_default_style .at300b, 
+.addthis_default_style .at300bo, 
+.addthis_default_style .at300m, 
+.addthis_default_style .at300bs {
+	float:none;
+}
+span.twitter-title {
+	background: #00a0dc;
+	padding: 5px 10px;
+	position: absolute;
+	left: 300px;
+	vertical-align: middle;
+	margin-top: 15px;
+	color: white;
+	opacity: 0;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	transition: all .3s linear;
+	}
+a.addthis_button_preferred_1:hover .twitter-title {
+	opacity: 1;
+	left: 310px;
+}
+span.facebook-title {
+	background: #00a0dc;
+	padding: 5px 10px;
+	position: absolute;
+	right: 275px;
+	vertical-align: middle;
+	margin-top: 20px;
+	color: white;
+	opacity: 0;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	transition: all .3s linear;
+}
+a.addthis_button_preferred_2:hover .facebook-title {
+	opacity: 1;
+	right: 285px;
 }
 
+/* @end */
+
+/* email subscription */
+
+.email {
+	margin-top: 60px;
+}
+.email input[type="email"] {
+	width: 400px;
+	height: 30px;
+	font-size: 18px;
+	font-family: "Varela", sans-serif;
+	text-align: center;
+}
 
 footer {
 	background-color: #364449;

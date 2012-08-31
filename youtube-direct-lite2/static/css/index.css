@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Varela|Varela+Round);
+@import "../bootstrap/css/bootstrap.css";
+
 body {
   margin: 0;
   font-family: Helvetica, sans-serif;
@@ -207,4 +210,12 @@ form > div {
 
 #moderation-message {
   margin: 5px;
+}
+/* Aarons edits */
+
+#login-panel {
+	text-align: center;
+	font-family: "Varela";
+	font-size: 24px;
+}
 }

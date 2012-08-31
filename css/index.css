@@ -23,7 +23,12 @@ a {
 #header {
   height: 28px;
 }
-
+.panel{
+	text-align: center;
+	font-family: "Varela";
+	font-size: 24px;
+	
+}
 #profile-picture {
   width: 28px;
   height: 28px;
