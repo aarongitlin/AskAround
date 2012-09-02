@@ -19,12 +19,13 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	
 	<script type="text/javascript" src="js/third-party/lscache.js"></script>
 	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
 	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
 	
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 
 	<script type="text/javascript" src="js/jPaginate.js"></script>
 	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
@@ -99,127 +100,164 @@
 	</script>
 	
 </head>
-<body>
+<body data-spy="scroll" data-target="#instructions">
 	
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="#"><img class="logo" src="images/logo_white.png" /></a>
-			<div class="nav-collapse">
-				<ul class="nav">
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#"><img class="logo" src="images/logo_white.png" /></a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
 			</div>
 		</div>
 	</div>
-	
+		<nav id="instructions" class="subnav">
+      <ul class="nav nav-list">
+	    	  <li><span>How it works:<i class="icon-chevron-right"></i> </span></li>
+	        <li><a href="#uploadvideos"><i class="icon-chevron-right"></i> Ask your question</a></li>
+	        <li><a href="#youtube"><i class="icon-chevron-right"></i> Watch other questions</a></li>
+	        <li><a href="#sharing"><i class="icon-chevron-right"></i> Tell Everyone</a></li>
+	        <li><a href="#email"><i class="icon-chevron-right"></i> Stay informed</a></li>
+			</ul>
+		</nav>
+
 	<div class="container main">
-		<div class="hero-unit center">
-			<h1>What's your big question?</h1>
-			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue</p>
-		</div>
-		<hr />
-		<div class="uploadvideos center">
-			<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
-				Record your question
-			</a>
-			<section id="uploadFrame" class="collapse center">
-				<div class="span8">	
-					<p> If this doesn't work, head over to youtube.com</p>
-				
-					<iframe width="100%" height="450" src="./youtube-direct-lite2/static/index.html#playlist=PLC44E422106423934">
-				
-					</iframe>
-				</div>
-			</div>
+			<div class="row">
+		      
+
+		<div class="span9">
+		
+					<section class="hero-unit center">
+						<h1>If you could ask just one question, what would it be?</h1>
+						<p>Ask the one question that you think is the most important in the world. </p>
+					</section>
+		
+		
+					<section id="uploadvideos" class="center">
+						<hr />
+						
+						<p class='first-element'>Ask your video question here</p>
+						<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
+							UPLOAD/RECORD
+						</a>
+						<section id="uploadFrame" class="collapse center">
+							<div class="span8">	
+								<p> If your browser doesn't support the uploader, post your video response at youtube.com.</p>
+								<iframe width="100%" height="450" src="./youtube-direct-lite2/static/index.html#playlist=PLC44E422106423934">
+								</iframe>
+							</div>
+						</section>
+					</section>
+						
 			<hr />
-		<div class="row">
-			<div class ="span9">
-				<div class="feature"></div>
+			
+			<section id="youtube">
+				<div class="feature first-element"></div>
 				<ul id="thumbs">
 				</ul>				
-			</div>
-		</div>
+			</section>
 		
-		<hr />
 		
-		<div class="row">
-			<div class="span9">
-				<div class ="sharing">
+				<section id ="sharing">
+					<hr />
+					
 					<!-- AddThis Button BEGIN -->
 					<div class ="span9 center">
-						<h2>Say something about us!</h2>
-					<div class="addthis_toolbox addthis_default_style">
-					<a class="addthis_button_preferred_1"><img src='images/twitter_icon.png' /><span class="twitter-title">twitter</span></a>
+						<h2 class='first-element'>Say something about us!</h2>
+						<div class="addthis_toolbox addthis_default_style">
+							<a class="addthis_button_preferred_1"><img src='images/twitter_icon.png' />
+								<span class="twitter-title">twitter</span></a>
 					
-					<a class="addthis_button_preferred_2" tw:text="I submitted a video at http://askaroundtheworld.com"><img src='images/facebook_icon.png' /><span class="facebook-title">facebook</span></a>
+							<a class="addthis_button_preferred_2" tw:text="I submitted a video at http://askaroundtheworld.com"><img src='images/facebook_icon.png' /><span class="facebook-title">facebook</span></a>
 					
+						</div>
 					</div>
 					<div class="span9 center">
-					<h3>Like and follow us!</h3>
-					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-					<a class="addthis_button_twitter_follow_native" tw:screen_name="lovesyoudesign"/>
-					<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
-					</div>
-					</div>
+						<h3>Like and follow us!</h3>
+						<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+						<a class="addthis_button_twitter_follow_native" tw:screen_name="lovesyoudesign"/>
+						<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
+					</div> <!--span9 center-->
 					<script type="text/javascript">
 						var addthis_config = {"data_track_addressbar":true};
 							
 						</script>
 					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5040256a7f6b27b6"></script>
 					<!-- AddThis Button END -->
-				</div>
-			</div>
-		</div>
+				</section>
 	
-	<hr />
 	
-			<div class="row">
-				<div class="span9">
-					<div class ="email center">
+			<section id="email">
+				<hr />
+				
+				<div class="span9 email center">
 						<!-- Begin MailChimp Signup Form -->
 						<div id="mc_embed_signup">
-						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate first-element" target="_blank" novalidate>
 							<label for="mce-EMAIL">Subscribe to our mailing list</label>
 							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
 							<div class="clear">
 								<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 						</form>
 						</div>
-
-						<!--End mc_embed_signup-->
 					</div>
+				</section>
+				<!--End mc_embed_signup-->
 				</div>
 			</div>
-		
 		</div> <!--end container-->
 	
-	<footer>
-		<div class="container">
-			
-			<div class="row-fluid">
-			
-				<div class="span2"><p>Logo</p></div>
-			
-				<div class="span8"><p>Text</p></div>
-			
-				<div class="span2"><p>Links</p></div>
-		
-			</div>
-		</div>
-	</footer>
+		<footer class="footer">
+		      <div class="container">
+		        <p class="pull-right"><a href="#">Back to top</a></p>
+		        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+		        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+		        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+		        <ul class="footer-links">
+		          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+		          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+		          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+		        </ul>
+		      </div>
+		    </footer>
 	
 	<!--Bootstrap Script-->
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-affix.js"></script>
+	
 <script type="text/javascript">
-	$(".collapse").collapse();
+	
+	$('.subnav').scrollspy({
+	    offset: 180
+	  });
+		
+		var offset = 180;
+
+		$('.subnav ul li a').click(function(event) {
+		    event.preventDefault();
+		    $($(this).attr('href'))[0].scrollIntoView();
+		    scrollBy(0, -offset);
+		});
+		
+
+	
+	var $window = $(window)
+	$('.subnav').affix({
+	      offset: {
+	        top: function () { return $window.width() <= 980 ? 320 : 255 }
+	      , bottom: 280
+	      }
+	    })
+</script>
 	
 </body>
 </html>
