@@ -64,11 +64,32 @@ h1, h2 {
 -------------------------------------------------- */
 
 .socialbar {
-    width: 100%;
-    height: 30px;
-    background-color: lightgray;
-    position: fixed;
-    top: 55px;
+	background-color: rgba(200, 210, 220, 0.75);
+	box-shadow: 0 -7px 15px rgba(200, 210, 220, 1.0) inset, 0 0 5px rgba(200, 210, 220, 0.75);
+	height: 30px;
+	position: fixed;
+	top: 55px;
+	width: 100%;
+}
+.socialbar .container {
+	max-width: 870px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.twitter-share-button, .twitter-follow-button, #___plusone_0 {
+    position: relative;
+    top: 5px;
+}
+.twitter-share-button {
+	padding-left: 10px;
+}
+#___plusone_0 {
+	left: -20px;
+}
+.twitter-follow-button {
+	margin-left: -40px;
+	position: relative;
 }
 
 /* Subnav
@@ -167,20 +188,36 @@ h1, h2 {
 	padding-left: 10px;
 	padding-right:10px;
 }
+.hero-unit h1 {
+	font-size: 66px;
+}
+.hero-unit h2 {
+	width: 90%;
+	margin: auto;
+}
 .hero-unit p {
-	margin-right: 20px;
-	padding-top: 10px;
+	padding-top: 30px;
 	font-family: "Varela", "Helvetica";
+	text-align: left;
+	margin: auto;
+	width: 85%;
 }
 
 #uploadvideos {
-	margin: 50px auto 50px;
+	margin: 0 auto 50px;
 	padding-bottom: 20px;
 }
 #uploadvideos a.btn {
 	font-size: 36px;
-	font-family: "Varela Round", sans-serif;
-	
+	line-height: 36px;
+	font-family: "Varela Round", sans-serif;	
+}
+i.red-dot {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url('../images/red-dot.png') no-repeat;
+	vertical-align: top;
 }
 #uploadvideos::before {
 	content: url('../images/video-button.png');
@@ -201,9 +238,16 @@ h1, h2 {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-	
+	width: 85%;
 }
-
+#uploadFrame p {
+	text-align: left;
+	font-size: 13px;
+	width: 85%;
+}
+#uploadFrame .inner {
+	padding: 10px;
+}
 #uploadFrame iframe {
 	border: none;
 }
@@ -223,6 +267,12 @@ h1, h2 {
 
 /* Youtubes
 -------------------------------------------------- */
+.tab-content {
+	overflow: hidden;
+}
+.tab-pane {
+	height: 20px;
+}
 
 .feature {
 	width: 100%;
@@ -265,7 +315,7 @@ ul#thumbs li:nth-child(3n+3) a {
 /* @end */
 
 /* Sharing
--------------------------------------------------- */
+-------------------------------------------------- 
 
 #sharing {
 	margin: 60px auto 0 auto;
