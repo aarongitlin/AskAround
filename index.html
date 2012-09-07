@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<title>Ask Around</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,7 +101,15 @@
 	
 </head>
 <body data-spy="scroll" data-target="#instructions" data-offset="100">
-	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -117,36 +125,37 @@
 						<li><a href="faq.html">FAQ</a></li>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
+
 				</div><!--/.nav-collapse -->
+				</div>
+				<div class="socialbar">
+					<div class="container">
+						<div class="pull-right">
+						<fb:like send="false" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="askaroundtheworld" data-hashtags="askaroundtheworld">Tweet</a>
+						<a href="https://twitter.com/askaroundtheworld" class="twitter-follow-button" data-show-count="false">Follow @askaroundtheworld</a>
+					<g:plusone size="medium"></g:plusone>
+							</div>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
-		<nav id="instructions" class="subnav">
-      <ul class="nav nav-list">
-	    	  <li><span>How it works:<i class="icon-chevron-right"></i> </span></li>
-	        <li><a href="#uploadvideos"><i class="icon-chevron-right"></i> Ask your question</a></li>
-	        <li><a href="#youtube"><i class="icon-chevron-right"></i> Watch other questions</a></li>
-	        <li><a href="#sharing"><i class="icon-chevron-right"></i> Tell Everyone</a></li>
-	        <li><a href="#email"><i class="icon-chevron-right"></i> Stay informed</a></li>
-			</ul>
-		</nav>
 
 	<div class="container main">
 			<div class="row-fluid">
-		      
 
-
-		
 					<section class="hero-unit center">
 						<h1>If you could ask just one question, what would it be?</h1>
-						<p>Ask the one question that you think is the most important in the world. </p>
+						<h2>Ask the one question that you think is the most important in the world. </h2>
+						<p>Ask Around the World is an AskVote.com initiative. Our goal is to connect people across our planet and give everyone the opportunity to ask the one question they think is the most important in the world. We encourage you to upload/record your question and to share it with everyone you know. If you only ever had one question, what would it be?</p>
 					</section>
 		
 		
 					<section id="uploadvideos" class="center">
 						<hr />
 						
-						<p class='first-element'>Ask your video question here</p>
+						<p class='first-element'><p>It’s all for a good cause: for every video we publish, we will donate US$1 to a worldwide charitable cause.</p>
 						<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
 							UPLOAD/RECORD
 						</a>
@@ -162,76 +171,48 @@
 			<hr />
 			
 			<section id="youtube">
-				<div class="feature first-element"></div>
+				<p>How it works:</p>
+				<ul class="nav nav-tabs first-element">
+		    	<li><a href="#upload" data-toggle="tab">1. Upload it</a></li>
+		    	<li><a href="#share" data-toggle="tab">2. Share it</a></li>
+		    	<li><a href="#watch" data-toggle="tab">3. Watch it</a></li>
+		    	<li><a href="#highfive" data-toggle="tab">4. High Five</a></li>
+		    </ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="upload">Ask the question that's most important to you in the world. Make it short (10 seconds). Make it meaningful.</div>
+					<div class="tab-pane" id="share">Post it, tweet it, shout it from your window.</div>
+					<div class="tab-pane" id="watch">Watch questions from others around the world</div>
+					<div class="tab-pane" id="highfive">You've just done humankind a favour. Dance around the room.</div>
+				</div>
+				
+				<div class="feature"></div>
 				<ul id="thumbs">
 				</ul>				
 			</section>
-		
-		
-				<section id ="sharing">
-					<hr />
-					
-					<!-- AddThis Button BEGIN -->
-					<div class ="center">
-						<h2 class='first-element'>Say something about us!</h2>
-						<div class="addthis_toolbox addthis_default_style">
-							<a class="addthis_button_preferred_1"><img src='images/twitter_icon.png' />
-								<span class="twitter-title">twitter</span></a>
-					
-							<a class="addthis_button_preferred_2" tw:text="I submitted a video at http://askaroundtheworld.com"><img src='images/facebook_icon.png' /><span class="facebook-title">facebook</span></a>
-					
-						</div>
-					</div>
-					<div class="center">
-						<h3>Like and follow us!</h3>
-						<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-						<a class="addthis_button_twitter_follow_native" tw:screen_name="lovesyoudesign"/>
-						<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
-					</div> <!--span9 center-->
-					<script type="text/javascript">
-						var addthis_config = {"data_track_addressbar":true};
-							
-						</script>
-					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5040256a7f6b27b6"></script>
-					<!-- AddThis Button END -->
-				</section>
-	
-	
-			<section id="email" class="center">
-				<hr />
-										<!-- Begin MailChimp Signup Form -->
-						<div id="mc_embed_signup">
-						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate first-element" target="_blank" novalidate>
-							<label for="mce-EMAIL">Subscribe to our mailing list</label>
-							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-							<div class="clear">
-								<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-						</form>
-						</div>
-				</section>
-				<!--End mc_embed_signup-->
-				</div>
-		</div> <!--end container-->
+		</div>
+	</div>
 	
 		<footer class="footer">
 		      <div class="container">
 						<div class="row">
-		        <div class='span2'>
-							<a class="brand" href="#"><img class="logo" src="images/logo_white.png" />
-							</a>
-						</div>
+		        	<div class='span2'>
+								<a class="brand" href="#"><img class="logo" src="images/logo_white.png" />
+								</a>
+							</div>
 						<div class='span5 offset1'>
 							<p>Ask-Around-the-World connects people across our planet and gives them the opportunity to ask the one question they think is the most important in the world. We encourage you to upload/record your question and to share it with everyone you know. If you only ever had one question, what would it be?</p>
 						</div>
 						<div class="span2 offset1">
-		        <ul class="footer-links">
-		          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-		          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
-		          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-		        </ul>
-		      </div>
-		</div>
-				</div>
+		        	<div id="mc_embed_signup">
+								<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate first-element" target="_blank" novalidate>
+									<label for="mce-EMAIL">Subscribe to our mailing list</label>
+									<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+									<div class="clear">
+										<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+										</div>
+								</form>
+						</div>
+					</div>
 		    </footer>
 	
 	<!--Bootstrap Script-->
@@ -261,6 +242,13 @@
 	      , bottom: 280
 	      }
 	    })
+</script>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
 </script>
 </body>
 </html>
