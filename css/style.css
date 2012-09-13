@@ -93,7 +93,7 @@ h1, h2 {
 }
 
 /* Subnav
--------------------------------------------------- 
+-------------------------------------------------- */
 #instructions ul {
 	max-width: 870px;
 	margin-left: auto;
@@ -109,7 +109,7 @@ h1, h2 {
 	         border-radius: 6px;
 	 /*-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
 	    -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-	         box-shadow: 0 1px 4px rgba(0,0,0,.065); 
+	         box-shadow: 0 1px 4px rgba(0,0,0,.065); */
 }
 
 .subnav ul li {
@@ -144,7 +144,7 @@ h1, h2 {
      -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
-/* Chevrons 
+/* Chevrons */
 .subnav .icon-chevron-right {
   float: right;
   margin-top: 2px;
@@ -179,7 +179,6 @@ h1, h2 {
 .subnav.affix-top li {
 	background-color: white;
 }
-		*/
 /* Hero Unit & Uploader
 -------------------------------------------------- */
 
@@ -312,8 +311,6 @@ ul#thumbs li:nth-child(3n+3) a {
 	background-color: #dddddd;
 }
 
-/* @end */
-
 /* Sharing
 -------------------------------------------------- 
 
@@ -431,7 +428,7 @@ hr {
 }
 .footer p {
   margin-bottom: 0;
-  color: #999;
+  color: #e8ecee;
 	font-size: 14px;
 }
 .footer-links {
@@ -441,7 +438,43 @@ hr {
   display: inline;
   margin-right: 10px;
 }
-
+.footer hr {
+	opacity: 0.25;
+}
+.footer input[id="mce-EMAIL"] {
+	height: 30px;
+	margin-bottom: 0;
+}
+[class^="social-"],
+[class*=" social-"] {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 24px;
+  vertical-align: text-top;
+  background-image: url("../images/social_icons.png");
+  background-position: 24px 24px;
+  background-repeat: no-repeat;
+}
+.social-youtube {
+	background-position: 0 0;
+}
+.social-facebook {
+	background-position: -24px 0;
+}
+.social-twitter {
+	background-position: -48px 0;
+}
+ul#connect li a{
+	font-size: 21px;
+	color: #e8ecee;
+	line-height: 28px;
+}
+ul#connect li a:hover {
+	color: #00a0dc;
+}
 /* About Page
 -------------------------------------------------- */
 
