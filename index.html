@@ -5,12 +5,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="css/index.css" />
-	<meta property="og:title" content="ShareThis Homepage" />
-	<meta property="og:type" content="Sharing Widgets" />
-	<meta property="og:url" content="http://sharethis.com" />
-	<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
-	<meta property="og:description" content="Sharing is great!" />
-	<meta property="og:site_name" content="ShareThis" />
+	<meta content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." name="description">
+	<meta property="og:title" content="Ask Around the World" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.askaroundtheworld.org" />
+	<meta property="og:image" content="images/logo_blue.jpg" />
+	<meta property="og:description" content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." />
+	<meta property="og:site_name" content="Ask Around the World" />
+	<meta property="fb:admins" content="32700800" />
+	<link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
 	
 	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -58,7 +61,7 @@
 				var fragments = feedURL.split("/");
 				var videoID = fragments[fragments.length - 2];
 				var url = videoURL + videoID;
-				list_data += '<iframe id="mainvideoplayer" width="870" height="450" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				list_data += '<iframe id="mainvideoplayer" width="750" height="400" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
 				
 			});
 			$(list_data).appendTo(".feature");
@@ -119,28 +122,27 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="#"><img class="logo" src="images/logo_white.png" /></a>
+				<a class="brand" href="/"><img class="logo" src="images/logo_white.png" alt="Ask Around the World" /></a>
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="about.html">About</a></li>
 						<li><a href="faq.html">FAQ</a></li>
 					</ul>
-
 				</div><!--/.nav-collapse -->
-				</div>
-				<div class="socialbar">
-					<div class="container">
-						<div class="pull-right">
-						<fb:like send="false" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="askarndtheworld" data-hashtags="askaroundtheworld">Tweet</a>
-						<g:plusone size="medium"></g:plusone>
-						<a href="https://twitter.com/askarndtheworld" class="twitter-follow-button" data-show-count="false">Follow @askarndtheworld</a>
-							</div>
-						</div>
-					</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="socialbar">
+		<div class="container">
+		<a href="#mc_embed_signup" class="subbrand">An askvote.com initiative - join the conversation</a>
+			<div class="pull-right">
+				<fb:like send="false" href="http://www.facebook.com/AskVotedotcom" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
+				</div>
+			</div>
+		</div>
 
 	<div class="container main">
 			<div class="row-fluid">
@@ -153,12 +155,9 @@
 		
 		
 					<section id="uploadvideos" class="center">
-						<hr />
+						<a class="upload-button" data-toggle="collapse" href="#uploadFrame">
+							<i class="white-cam"></i><h2> UPLOAD/RECORD</h2></a>
 						
-						<p class='first-element'><p>It's all for a good cause: for every video we publish, we will donate US$1 to a worldwide charitable cause.</p>
-						<a class="btn btn-large" data-toggle="collapse" href="#uploadFrame">
-							<i class="red-dot"></i> UPLOAD/RECORD
-						</a>
 						<section id="uploadFrame" class="collapse center">
 							<div class="inner">	
 								<p> The uploader works best in Chrome, but should also work in Firefox and Safari. The webcam recorder will work best with up to date versions of Adobe Flash and your webcam's firmware. </p>
@@ -168,24 +167,18 @@
 								</iframe>
 							</div>
 						</section>
-					</section>
+						<p>Why submit? Well, it's for a good cause: for every video we publish, we will donate US$1 to a worldwide charitable cause. Not to mention other cool stuff like prizes and being seen around the world!</p>
+						</section>
 						
-			<hr />
 			
 			<section id="youtube">
-				<p>How it works:</p>
-				<ul class="nav nav-tabs first-element">
-		    	<li class="active"><a href="#upload" data-toggle="tab">1. Upload it</a></li>
-		    	<li><a href="#share" data-toggle="tab">2. Share it</a></li>
-		    	<li><a href="#watch" data-toggle="tab">3. Watch it</a></li>
-		    	<li><a href="#highfive" data-toggle="tab">4. High Five</a></li>
+				<h2>So, what next?</h2>
+				<ul class="first-element">
+		    	<li><strong>Check out</strong> the videos below. See what other people want to know!</li>
+		    	<li><strong>Share it.</strong> Like it. Tweet it. We want to create a global voice and let everyone's voice be heard.</li>
+		    	<li><strong>Learn More.</strong> This project is part of an Askvote.com initiative. Join the conversation revolution. </li>
 		    </ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="upload">Ask the question that's most important to you in the world. Make it short (10 seconds). Make it meaningful.</div>
-					<div class="tab-pane" id="share">Post it, tweet it, shout it from your window.</div>
-					<div class="tab-pane" id="watch">Watch questions from others around the world</div>
-					<div class="tab-pane" id="highfive">You've just done humankind a favour. Dance around the room.</div>
-				</div>
+			
 				
 				<div class="feature"></div>
 				<ul id="thumbs">
@@ -201,21 +194,21 @@
 								<a class="brand" href="#"><img class="logo" src="images/AskVote_logo.png" />
 								</a>
 							</div>
-						<div class='span5'>
+						<div class='span4'>
 							<h2>What's that?</h2>
 							<p>Ask Around the World is an AskVote.com initiative.</p>
 							<p>AskVote.com is the next generation of online conversation.</p>
-							<p><strong>WHAT</strong>: an ever-evolving platform for better conversation</p>
-							<p><strong>WHY</strong>: meaningful dialogue is the key to mutual understanding</p>
-							<p><strong>HOW</strong>: question everything, including yourself</p>
+							<p><strong>WHAT</strong>: an ever-evolving platform for better conversation<br />
+							<strong>WHY</strong>: meaningful dialogue is the key to mutual understanding<br />
+							<strong>HOW</strong>: question everything, including yourself</p>
 						</div>
 						
-						<div class="span3">
+						<div class="span2">
 							<ul id="connect">
 								<h2>Connect</h2>
 								<li><a href="mailto:info@askaroundtheworld.org/"><i class="social-email"></i> email</a>
-								<li><a href="http://facebook.com/"><i class="social-facebook"></i> facebook</a>
-								<li><a href="http://twitter.com/askarndtheworld"><i class="social-twitter"></i> twitter</a>
+								<li><a href="http://www.facebook.com/AskVotedotcom"><i class="social-facebook"></i> facebook</a>
+								<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
 								<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
 						</div>
 					</div>
@@ -223,11 +216,11 @@
 					<div class="row">
 						<div id="mc_embed_signup">
 							<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-								<div class="span8">
-								<label for="mce-EMAIL"><p>To find out more about AskVote.com and to become one of the first in the world to join the conversation revolution, please add your name to our early bird list.</p></label></div>
-								<div class='span4'>
+								<div class="span4 offset3">
+								<label for="mce-EMAIL"><p>To find out more about AskVote.com, add your email address and join the conversation revolution.</p></label></div>
+								<div class='span2'>
 								<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-									<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+									<input type="submit" class="upload-button" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
 									</div>
 							</form>
 					</div>
@@ -263,12 +256,6 @@
 	      }
 	    })
 </script>
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
+
 </body>
 </html>

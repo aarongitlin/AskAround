@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<title>Ask Around</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="css/index.css" />
-	<meta property="og:title" content="ShareThis Homepage" />
-	<meta property="og:type" content="Sharing Widgets" />
-	<meta property="og:url" content="http://sharethis.com" />
-	<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
-	<meta property="og:description" content="Sharing is great!" />
-	<meta property="og:site_name" content="ShareThis" />
+	<meta content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." name="description">
+	<meta property="og:title" content="Ask Around the World" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.askaroundtheworld.org" />
+	<meta property="og:image" content="images/logo_blue.jpg" />
+	<meta property="og:description" content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." />
+	<meta property="og:site_name" content="Ask Around the World" />
+	<meta property="fb:admins" content="32700800" />
+	<link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
 	
 	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -21,11 +25,95 @@
 	<![endif]-->
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	
+	<script type="text/javascript" src="js/third-party/lscache.js"></script>
+	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
+	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
+	
 
+
+	<script type="text/javascript" src="js/jPaginate.js"></script>
+	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+	<!-- widgets from sharthis.com 
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({
+		publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98",
+		newOrZero:"zero"
+		}); 
+	</script>-->
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		// to get the playlist url https://gdata.youtube.com/feeds/api/users/userId/playlists?v=2
+		// change orderby: https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#orderbysp
+		//var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&orderby=published&callback=?';
+		var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui?v=2&alt=json&callback=?';
+		var videoURL= 'http://www.youtube.com/watch?v=';
+		$.getJSON(playListURL, function(data) {
+			
+			// get the first video from the playlist and put it in .feature
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				if(i>0){return;}
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				var url = videoURL + videoID;
+				list_data += '<iframe id="mainvideoplayer" width="750" height="400" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				
+			});
+			$(list_data).appendTo(".feature");
+			
+			//testing changing the iframe src
+			//$('#mainvideoplayer').attr('src', 'http://www.youtube.com/embed/zX9HpsCVC9s');
+			
+			// get all the playlist video thumbnails and put it in .thumbs
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				//var url = videoURL + videoID;
+				var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
+				// different sizes for video thumbs: default, hqdefault, mqdefault
+				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
+				list_data += '<li><a href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
+			});
+			$(list_data).appendTo("#thumbs");
+			
+			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
+			$('ul#thumbs li a').click(function() {
+				var embedsrc = $(this).attr('href');
+				$('#mainvideoplayer').attr('src', embedsrc);
+				//$('#mainvideoplayer').play();
+				return false;
+			});
+			
+			//Pagination
+			
+			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
+			
+			
+		});
+	
+	});
+	
+	</script>
 	
 </head>
 <body data-spy="scroll" data-target="#instructions" data-offset="100">
-	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -34,18 +122,27 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><img class="logo" src="images/logo_white.png" /></a>
+				<a class="brand" href="/"><img class="logo" src="images/logo_white.png" alt="Ask Around the World" /></a>
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="about.html">About</a></li>
 						<li><a href="faq.html">FAQ</a></li>
-						<li><a href="#contact">Contact</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
 	</div>
 	
+	<div class="socialbar">
+		<div class="container">
+		<a href="#mc_embed_signup" class="subbrand">An askvote.com initiative - join the conversation</a>
+			<div class="pull-right">
+				<fb:like send="false" href="http://www.facebook.com/AskVotedotcom" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
+				</div>
+			</div>
+		</div>
 
 	<div class="container main about">
 			<div class="row">
@@ -95,30 +192,33 @@
 									<a class="brand" href="#"><img class="logo" src="images/AskVote_logo.png" />
 									</a>
 								</div>
-							<div class='span5'>
+							<div class='span4'>
+								<h2>What's that?</h2>
 								<p>Ask Around the World is an AskVote.com initiative.</p>
 								<p>AskVote.com is the next generation of online conversation.</p>
-								<p><strong>WHAT</strong>: an ever-evolving platform for better conversation</p>
-								<p><strong>WHY</strong>: meaningful dialogue is the key to mutual understanding</p>
-								<p><strong>HOW</strong>: question everything, including yourself</p>
+								<p><strong>WHAT</strong>: an ever-evolving platform for better conversation<br />
+								<strong>WHY</strong>: meaningful dialogue is the key to mutual understanding<br />
+								<strong>HOW</strong>: question everything, including yourself</p>
 							</div>
 
-							<div class="span3">
+							<div class="span2">
 								<ul id="connect">
-									<li><a href="http://facebook.com/"><i class="social-facebook"></i> facebook</a>
-									<li><a href="http://twitter.com/"><i class="social-twitter"></i> twitter</a>
-									<li><a href="http://youtube.com/"><i class="social-youtube"></i> youtube</a>
+									<h2>Connect</h2>
+									<li><a href="mailto:info@askaroundtheworld.org/"><i class="social-email"></i> email</a>
+									<li><a href="http://www.facebook.com/AskVotedotcom"><i class="social-facebook"></i> facebook</a>
+									<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
+									<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
 							</div>
 						</div>
 						<hr />
 						<div class="row">
 							<div id="mc_embed_signup">
 								<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-									<div class="span8">
-									<label for="mce-EMAIL"><p>To find out more about AskVote.com and to become one of the first in the world to join the conversation revolution, please add your name to our early bird list.</p></label></div>
-									<div class='span4'>
+									<div class="span4 offset3">
+									<label for="mce-EMAIL"><p>To find out more about AskVote.com, add your email address and join the conversation revolution.</p></label></div>
+									<div class='span2'>
 									<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-										<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+										<input type="submit" class="upload-button" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
 										</div>
 								</form>
 						</div>
