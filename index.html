@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Ask Around</title>
@@ -100,7 +100,7 @@
 	</script>
 	
 </head>
-<body data-spy="scroll" data-target="#instructions">
+<body data-spy="scroll" data-target="#instructions" data-offset="100">
 	
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -113,7 +113,7 @@
 				<a class="brand" href="#"><img class="logo" src="images/logo_white.png" /></a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="#about">About</a></li>
+						<li><a href="about.html">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
@@ -131,10 +131,10 @@
 		</nav>
 
 	<div class="container main">
-			<div class="row">
+			<div class="row-fluid">
 		      
 
-		<div class="span9">
+
 		
 					<section class="hero-unit center">
 						<h1>If you could ask just one question, what would it be?</h1>
@@ -171,7 +171,7 @@
 					<hr />
 					
 					<!-- AddThis Button BEGIN -->
-					<div class ="span9 center">
+					<div class ="center">
 						<h2 class='first-element'>Say something about us!</h2>
 						<div class="addthis_toolbox addthis_default_style">
 							<a class="addthis_button_preferred_1"><img src='images/twitter_icon.png' />
@@ -181,7 +181,7 @@
 					
 						</div>
 					</div>
-					<div class="span9 center">
+					<div class="center">
 						<h3>Like and follow us!</h3>
 						<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 						<a class="addthis_button_twitter_follow_native" tw:screen_name="lovesyoudesign"/>
@@ -196,11 +196,9 @@
 				</section>
 	
 	
-			<section id="email">
+			<section id="email" class="center">
 				<hr />
-				
-				<div class="span9 email center">
-						<!-- Begin MailChimp Signup Form -->
+										<!-- Begin MailChimp Signup Form -->
 						<div id="mc_embed_signup">
 						<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate first-element" target="_blank" novalidate>
 							<label for="mce-EMAIL">Subscribe to our mailing list</label>
@@ -209,25 +207,30 @@
 								<input type="submit" class="btn btn-large" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 						</form>
 						</div>
-					</div>
 				</section>
 				<!--End mc_embed_signup-->
 				</div>
-			</div>
 		</div> <!--end container-->
 	
 		<footer class="footer">
 		      <div class="container">
-		        <p class="pull-right"><a href="#">Back to top</a></p>
-		        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-		        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-		        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+						<div class="row">
+		        <div class='span2'>
+							<a class="brand" href="#"><img class="logo" src="images/logo_white.png" />
+							</a>
+						</div>
+						<div class='span5 offset1'>
+							<p>Ask-Around-the-World connects people across our planet and gives them the opportunity to ask the one question they think is the most important in the world. We encourage you to upload/record your question and to share it with everyone you know. If you only ever had one question, what would it be?</p>
+						</div>
+						<div class="span2 offset1">
 		        <ul class="footer-links">
 		          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
 		          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
 		          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
 		        </ul>
 		      </div>
+		</div>
+				</div>
 		    </footer>
 	
 	<!--Bootstrap Script-->
@@ -244,13 +247,13 @@
 	</script>
 >>>>>>> collapse change
 	
-	$('.subnav').scrollspy({
-	    offset: 180
-	  });
+	$('#instructions ul li a').click(function(event) {
+		event.preventDefault
+	})
 		
-		var offset = 180;
+		var offset = 100;
 
-		$('.subnav ul li a').click(function(event) {
+		$('#instructions ul li a').click(function(event) {
 		    event.preventDefault();
 		    $($(this).attr('href'))[0].scrollIntoView();
 		    scrollBy(0, -offset);
@@ -266,6 +269,5 @@
 	      }
 	    })
 </script>
-	
 </body>
 </html>

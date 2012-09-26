@@ -13,7 +13,7 @@ body {
 	background-image: -moz-repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 	
 }
-h1 {
+h1, h2 {
 	font-family: "Varela Round", "sans-serif";
 	font-weight: normal;
 }
@@ -28,7 +28,13 @@ h1 {
 .first-element {
 	margin-top: 40px;
 }
+.center {
+	text-align: center;
+	margin: auto;
+}
 
+/* Main Nav
+-------------------------------------------------- */
 .navbar-inner {
 	box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
 	-webkit-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
@@ -55,6 +61,8 @@ h1 {
 	padding: 5px 20px 5px;
 }
 
+/* Subnav
+-------------------------------------------------- */
 #instructions ul {
 	max-width: 870px;
 	margin-left: auto;
@@ -63,7 +71,7 @@ h1 {
 
 .subnav {
 	width: 100%;
-	 margin: 30px 0 0;
+	 margin: 0;
 	 padding: 0;
 	 -webkit-border-radius: 6px;
 	    -moz-border-radius: 6px;
@@ -124,7 +132,7 @@ h1 {
   opacity: 1;
 }
 .subnav.affix {
-  top: 25px;
+  top: 55px;
 	z-index: 2;
 	background-color: white;
 }
@@ -135,16 +143,14 @@ h1 {
 }
 .subnav.affix-top {
 	position: absolute;
-	top: 280px;
+	top: 310px;
 }
 .subnav.affix-top li {
 	background-color: white;
 }
 
-.center {
-	text-align: center;
-	margin: auto;
-}
+/* Hero Unit & Uploader
+-------------------------------------------------- */
 
 .hero-unit {
 	background: none;
@@ -163,7 +169,6 @@ h1 {
 }
 #uploadvideos a.btn {
 	font-size: 36px;
-	margin-top: 40px;
 	font-family: "Varela Round", sans-serif;
 	
 }
@@ -178,6 +183,21 @@ h1 {
 	left: -40px;
 	top: -20px;
 }
+
+#uploadFrame {
+	margin-top: 20px;
+	border: 5px solid lightgray;
+	background-color: #f6f6f6;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+}
+
+#uploadFrame iframe {
+	border: none;
+}
+
 .feature::before {
 	content: url('../images/watch-button.png');
 	position: relative;
@@ -189,54 +209,19 @@ h1 {
 	left: -40px;
 	top: -100px;
 }
-#sharing::before {
-	content: url('../images/share-button.png');
-	position: relative;
-	width:0px;
-	height:0px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: -40px;
-	top: -20px;
-}
-.email::before {
-	content: url('../images/email-button.png');
-	position: relative;
-	width:0px;
-	height:0px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: -40px;
-	top: -60px;
-}
-
-img.icon {
-	height: 24px;
-}
-/* @group Upload */
-
-#uploadFrame {
-	margin-top: 20px;
-	border: 5px solid lightgray;
-	background-color: #f6f6f6;
-	
-}
-
-#uploadFrame iframe {
-	border: none;
-}
-
 /* @end */
+
+/* Youtubes
+-------------------------------------------------- */
 
 .feature {
 	width: 100%;
 	margin-bottom: 10px;
 	margin-top: 60px;
 }
-
-/* @group Thumbs and pagination */
+.feature iframe {
+	max-width:100%;
+}
 
 ul#thumbs {
 	margin: 30px 0 10px auto;
@@ -269,11 +254,22 @@ ul#thumbs li:nth-child(3n+3) a {
 
 /* @end */
 
-/* @sharing */
+/* Sharing
+-------------------------------------------------- */
+
 #sharing {
-	margin-top: 60px;
-	display: inline-block;
-	padding-bottom: 30px;
+	margin: 60px auto 0 auto;
+}
+#sharing::before {
+	content: url('../images/share-button.png');
+	position: relative;
+	width:0px;
+	height:0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -20px;
 }
 .addthis_default_style .addthis_separator, 
 .addthis_default_style .at300b, 
@@ -321,10 +317,24 @@ a.addthis_button_preferred_2:hover .facebook-title {
 
 /* @end */
 
-/* email subscription */
+/* Email
+-------------------------------------------------- */
+#email {
+	margin-top: 60px;
+}
 
-
-.email input[type="email"] {
+#email::before {
+	content: url('../images/email-button.png');
+	position: relative;
+	width:0px;
+	height:0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	left: -40px;
+	top: -20px;
+}
+#email input[type="email"] {
 	width: 400px;
 	height: 30px;
 	font-size: 18px;
@@ -332,6 +342,19 @@ a.addthis_button_preferred_2:hover .facebook-title {
 	text-align: center;
 }
 
+input:focus:required {
+	color: #555;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input:focus:required:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	color: #555;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
 hr {
 	border-top: 2px solid #eeeeee;
 	border-bottom: 2px solid #ffffff;
@@ -348,7 +371,8 @@ hr {
 }
 .footer p {
   margin-bottom: 0;
-  color: #777;
+  color: #999;
+	font-size: 14px;
 }
 .footer-links {
   margin: 10px 0;
@@ -358,12 +382,37 @@ hr {
   margin-right: 10px;
 }
 
+/* About Page
+-------------------------------------------------- */
 
+.about strong {
+	display: block;
+	padding-bottom: 20px;
+}
+/* Responsive Stuff
+-------------------------------------------------- */
 
-/* @responsive edits */
 @media (max-width: 979px) {
 	body {
 		padding-top: 0;
 		
+	}
+	
+	.subnav.affix-top, .subnav.affix {
+		position: absolute;
+		width: 250px;
+		left: 50%;
+		margin-left: -125px;
+		top: 400px;
+	}
+	.subnav ul li {
+		width: 250px;
+	}
+	#uploadvideos {
+		margin-top: 220px;
+	}
+	.footer {
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }
