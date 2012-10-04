@@ -111,6 +111,9 @@ a.signup:hover {
 .socialbar .pull-right {
 	padding-right: 10px;
 }
+#facebook {
+	display: inline-block;
+}
 
 .twitter-share-button, .twitter-follow-button {
     position: relative;

@@ -97,8 +97,9 @@
 			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
 			$('ul#thumbs li a').click(function() {
 				//var embedsrc = $(this).attr('href');
-				$('#like-button').load("facebook.html");
-				
+				var loc = window.location;
+		    $('.fb-like').html('<fb:like href="'+loc+'" send="false" width="450" show_faces="false"></fb:like>');
+		    FB.XFBML.parse();
 				//$('#mainvideoplayer').play();
 				//return false;
 			});
@@ -133,12 +134,12 @@
 		//$(window).trigger( 'hashchange');
 	
 	});
-		$(function(){
-			$('<iframe scrolling="no" frameborder="0" style="width: 300px; height: 80px;'+
-				'" src="http://www.facebook.com/widgets/like.php?href='+
-					encodeURIComponent(location.href)+
-				'"></iframe>').appendTo('#like-button')
-		})
+	// $(function(){
+	// 	$('<iframe scrolling="no" frameborder="0" style="width: 300px; height: 80px;'+
+	// 		'" src="http://www.facebook.com/widgets/like.php?href='+
+	// 			encodeURIComponent(location.href)+
+	// 		'"></iframe>').appendTo('#like-button')
+	// })
 	
 	</script>
 	
@@ -178,8 +179,13 @@
 		<div class="container">
 		<a href="#mc_embed_signup" class="subbrand">An AskVote.com initiative</a>
 			<div class="pull-right">
-				
-					<div id="like-button"></div>
+				<div id="facebook">
+					<span class="fb-like">    
+					  <fb:like send="false" width="450" show_faces="false"></fb:like>
+					</span>
+
+					
+				</div>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
 				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
 				</div>
