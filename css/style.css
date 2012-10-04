@@ -111,7 +111,7 @@ a.signup:hover {
 .socialbar .pull-right {
 	padding-right: 10px;
 }
-#facebook {
+#facebook, #twitter {
 	display: inline-block;
 }
 

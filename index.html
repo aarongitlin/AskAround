@@ -95,13 +95,18 @@
 			$(list_data).appendTo("#thumbs");
 			
 			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
+			$(window).load(function(){
+			
 			$('ul#thumbs li a').click(function() {
 				//var embedsrc = $(this).attr('href');
 				var ask = "http://www.askaroundtheworld.org/index.html";
-				$('.fb-like').delay(800).html('<fb:like href="'+ ask + "#" + url +'" send="true" width="450" show_faces="true"></fb:like>');
+				$('.fb-like').html('<fb:like send="false" layout="button_count" width="450" show_faces="false" data-href="'+ ask + "#" + url +'"></fb:like>');
 				    FB.XFBML.parse();
+				$("#twitter").html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ ask + "#" + url +'"  data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>');
+					twttr.widgets.load()
 				//$('#mainvideoplayer').play();
 				//return false;
+			});
 			});
 			
 			//Pagination
@@ -153,7 +158,7 @@
 	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -179,14 +184,11 @@
 		<div class="container">
 		<a href="#mc_embed_signup" class="subbrand">An AskVote.com initiative</a>
 			<div class="pull-right">
-				<div id="facebook">
-					<span class="fb-like">    
-					  <fb:like send="false" width="450" show_faces="false"></fb:like>
-					</span>
-
-					
+				<div id="facebook" class="fb-like">
+					  <fb:like send="false" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>				
 				</div>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				<div id="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				</div>
 				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
 				</div>
 			</div>
@@ -260,6 +262,7 @@
 								<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
 								<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
 						</ul>
+					</div>
 					</div>
 					<hr />
 					<div class="row-fluid">
