@@ -97,9 +97,9 @@
 			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
 			$('ul#thumbs li a').click(function() {
 				//var embedsrc = $(this).attr('href');
-				var loc = window.location;
-		    $('.fb-like').html('<fb:like href="'+loc+'" send="false" width="450" show_faces="false"></fb:like>');
-		    FB.XFBML.parse();
+				var ask = "http://www.askaroundtheworld.org/index.html";
+				$('.fb-like').delay(800).html('<fb:like href="'+ ask + "#" + url +'" send="true" width="450" show_faces="true"></fb:like>');
+				    FB.XFBML.parse();
 				//$('#mainvideoplayer').play();
 				//return false;
 			});
@@ -132,7 +132,7 @@
 		// Since the event is only triggered when the hash changes, we need to trigger
 		// the event now, to handle the hash the page may have loaded with.
 		//$(window).trigger( 'hashchange');
-	
+
 	});
 	// $(function(){
 	// 	$('<iframe scrolling="no" frameborder="0" style="width: 300px; height: 80px;'+
