@@ -95,8 +95,6 @@
 			$(list_data).appendTo("#thumbs");
 			
 			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
-			$(window).load(function(){
-			
 			$('ul#thumbs li a').click(function() {
 				//var embedsrc = $(this).attr('href');
 				var ask = "http://www.askaroundtheworld.org/index.html";
@@ -106,7 +104,6 @@
 					twttr.widgets.load()
 				//$('#mainvideoplayer').play();
 				//return false;
-			});
 			});
 			
 			//Pagination
@@ -262,7 +259,6 @@
 								<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
 								<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
 						</ul>
-					</div>
 					</div>
 					<hr />
 					<div class="row-fluid">
