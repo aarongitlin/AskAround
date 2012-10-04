@@ -46,13 +46,15 @@ ul li {
 	box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
 	-webkit-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.1), 0 1px 10px rgba(0,160,220,0.25);
 	-moz-box-shadow: inset 0 -1px 0 rgba(0,160,220,0.25), 0 1px 10px rgba(0,160,220,0.25);
+	background-color: #00A0D2;
 	background-color: rgba(0,160,220,1.0);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
 	background-image: -webkit-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
 	background-image: -moz-linear-gradient(center top , #46b4dc, #00a0dc);
 	background-image: -o-linear-gradient(top, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
 	background-image: linear-gradient(to bottom, 0 0, 0 100%, from(#46b4dc), to(#00a0dc));
-	min-height: 50px;
+	height: 50px;
+	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#46b4dc', endColorstr='#00a0dc', GradientType=0);
 	
 }
 .navbar .nav > li > a {
@@ -65,7 +67,7 @@ ul li {
 	background-color: #8cc8dc;
 }
 .navbar .brand {
-	padding: 5px 20px 5px;
+	padding: 2px 20px 5px;
 }
 a.signup {
 	color: white;
@@ -80,11 +82,12 @@ a.signup:hover {
 -------------------------------------------------- */
 
 .socialbar {
-	background-color: rgba(200, 210, 220, 0.75);
+	background-color: lightgray;
+	background-color: rgba(200, 210, 220, 1.0);
 	box-shadow: 0 -7px 15px rgba(200, 210, 220, 1.0) inset, 0 0 5px rgba(200, 210, 220, 0.75);
 	height: 25px;
 	position: fixed;
-	top: 60px;
+	top: 50px;
 	width: 100%;
 	padding-top: 5px;
 	z-index: 1;
@@ -181,9 +184,9 @@ i.white-cam {
 	border-radius: 8px;
 	display: inline-block;
 	color: white;
-	/*no gradient 
-	background-color: #DC3C3C; light red
-	/*with gradient*/	
+
+	background-color: #DC3C3C; /*light red*/
+
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D65858), to(#B20000));
   background-image: -webkit-linear-gradient(top, #D65858, #B20000);
   background-image: -o-linear-gradient(top, #D65858, #B20000);
@@ -192,7 +195,6 @@ i.white-cam {
   background-repeat: repeat-x;
 
 	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#D65858', endColorstr='#B20000', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   *zoom: 1;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -234,6 +236,8 @@ i.white-cam {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	width: 85%;
+	display: block;
+	height: 0;
 }
 #uploadFrame p {
 	text-align: left;
@@ -245,6 +249,10 @@ i.white-cam {
 }
 #uploadFrame iframe {
 	border: none;
+}
+/* IE bug */
+.collapse {
+overflow: hidden !important;
 }
 /*
 .feature::before {
@@ -497,8 +505,10 @@ footer h2 {
 -------------------------------------------------- */
 
 .about strong {
-	display: block;
-	padding-bottom: 20px;
+	display: inline-block;
+}
+.about ul li {
+	padding-top: 10px;
 }
 
 /* FAQ page
@@ -575,7 +585,7 @@ footer h2 {
   opacity: 1;
 }
 .subnav.affix {
-  top: 90px;
+  top: 80px;
 	z-index: 2;
 	background-color: white;
 }
