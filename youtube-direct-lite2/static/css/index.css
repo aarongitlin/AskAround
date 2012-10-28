@@ -4,6 +4,7 @@
 body {
   margin: 0;
   font-family: Helvetica, sans-serif;
+  background: #F6F6F6;
 }
 
 ul {
@@ -63,6 +64,11 @@ a {
   text-align: center;
 }
 
+#upload-panel, #webcam-panel {
+  width: 75%;
+  margin: auto;
+  text-align: center;
+}
 #tabs > li {
   margin: auto;
 }
