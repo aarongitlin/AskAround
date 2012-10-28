@@ -119,8 +119,8 @@ define([
 
         $('.panel').hide();
         $(utils.format('#{0}-panel', state)).show();
-        $('#tabs > li').removeClass('selected');
-        $(utils.format('#tabs > li[data-state={0}]', state)).addClass('selected');
+        $('#tabs > li').removeClass('active');
+        $(utils.format('#tabs > li[data-state={0}]', state)).addClass('active');
 
         window._gaq.push(['_trackPageview', utils.format('{0}#state={1}', location.pathname, state)]);
       });
