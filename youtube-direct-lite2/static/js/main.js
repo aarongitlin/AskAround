@@ -21,5 +21,7 @@ requirejs([
 ], function($, load, auth) {
   auth.initAuth();
 
-
+  $(function() {
+    load.onLoad('upload');
+  });
 });

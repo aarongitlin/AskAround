@@ -119,8 +119,8 @@ define([
 
         $('.panel').hide();
         $(utils.format('#{0}-panel', state)).show();
-        $('#tabs > li').removeClass('selected').addClass('unselected');
-        $(utils.format('#tabs > li[data-state={0}]', state)).addClass('selected').removeClass('unselected');
+        $('#tabs > li').removeClass('selected');
+        $(utils.format('#tabs > li[data-state={0}]', state)).addClass('selected');
 
         window._gaq.push(['_trackPageview', utils.format('{0}#state={1}', location.pathname, state)]);
       });
