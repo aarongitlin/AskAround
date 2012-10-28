@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+  
+	<title>Ask Around</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="css/index.css" />
+	<meta content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." name="description">
+	<meta property="og:title" content="Ask Around the World" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.askaroundtheworld.org" />
+	<meta property="og:image" content="images/logo_blue.jpg" />
+	<meta property="og:description" content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." />
+	<meta property="og:site_name" content="Ask Around the World" />
+	<meta property="fb:admins" content="32700800" />
+	
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/third-party/lscache.js"></script>
+	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
+	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
+	
+
+
+	<script type="text/javascript" src="js/jPaginate.js"></script>
+	
+	<!-- widgets from sharthis.com 
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({
+		publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98",
+		newOrZero:"zero"
+		}); 
+	</script>-->
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+//		var once = 0;
+//		
+		if(window.location.search) {
+				var hashtag = window.location.search.replace("?","#");
+				var path = window.location.href.replace(window.location.search,"");
+				path = path.replace(window.location.hash,"")
+				window.location.replace(path+hashtag)
+				once = 1;
+		}
+		
+		// to get the playlist url https://gdata.youtube.com/feeds/api/users/userId/playlists?v=2
+		// change orderby: https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#orderbysp
+		//var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&orderby=published&callback=?';
+		var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui?v=2&alt=json&callback=?';
+		var videoURL= 'http://www.youtube.com/watch?v=';
+		$.getJSON(playListURL, function(data) {
+			
+			// get the first video from the playlist and put it in .feature
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				if(i>0){return;}
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				var url = videoURL + videoID;
+				list_data += '<iframe id="mainvideoplayer" width="750" height="400" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				
+			});
+			$(list_data).appendTo(".feature");
+			var url = $.param.fragment();
+
+			if(url) {
+
+				var embedsrc = 'http://www.youtube.com/embed/'+url+'?autoplay=0&rel=0&wmode=transparent';
+
+				$('#mainvideoplayer').attr('src', embedsrc);
+
+			}
+			
+			//testing changing the iframe src
+			//$('#mainvideoplayer').attr('src', 'http://www.youtube.com/embed/zX9HpsCVC9s');
+			
+			// get all the playlist video thumbnails and put it in .thumbs
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				//var url = videoURL + videoID;
+				//var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
+				var embedsrc = '#'+videoID;
+				// different sizes for video thumbs: default, hqdefault, mqdefault
+				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
+				list_data += '<li><a href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
+			});
+			$(list_data).appendTo("#thumbs");
+			
+			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
+			$('ul#thumbs li a').click(function() {
+				//var embedsrc = $(this).attr('href');
+				
+				//$('#mainvideoplayer').play();
+				//return false;
+			});
+			
+			//Pagination
+			
+			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
+			
+		});
+
+		//jquerybbq
+			  
+		// Bind an event to window.onhashchange that, when the history state changes,
+		// gets the url from the hash and displays either our cached content or fetches
+		// new content to be displayed.
+		$(window).bind( 'hashchange', function(e) {
+		
+			// Get the hash (fragment) as a string, with any leading # removed. Note that
+			// in jQuery 1.4, you should use e.fragment instead of $.param.fragment().
+
+			var url = $.param.fragment();
+
+			var embedsrc = 'http://www.youtube.com/embed/'+url+'?autoplay=0&rel=0&wmode=transparent';
+			
+			// change the image src here aaron
+			
+			$('.facebookshare').replaceWith('<a href="#" data-href="http://www.askaroundtheworld.org/?'+url+'" class="facebookshare"><img src="images/facebooksharebutton.png" alt="Share on Facebook" /></a>');
+			
+			$('.facebookshare').click(function() {
+						
+				link = $(this).data("href");
+	
+				postToFeed(link);
+				
+				return false;
+				
+			});
+			
+			//FB.XFBML.parse();
+
+			$('#mainvideoplayer').attr('src', embedsrc);
+			
+			//location.reload();
+			
+			//location.search;
+			
+			//var query = window.location.hash.replace("#","?");
+			//var path = window.location.href.replace(window.location.search,"");
+			//path = path.replace(window.location.hash,"");
+			//window.location.hash.replace('');
+			//window.location(query);
+			//return false;
+			//alert(path+query);
+
+		})
+		
+		// Since the event is only triggered when the hash changes, we need to trigger
+		// the event now, to handle the hash the page may have loaded with.
+		$(window).trigger( 'hashchange');
+		
+		// Facebook Posting
+			
+		$('.facebookshare').click(function() {
+			
+			link = $(this).data("href");
+//			picture = $(this).parent().children('.image').children('img').attr('src');
+//			name = $(this).parent().children('.title').text();
+//			caption = $(this).parent().children('.subtitle').text();
+//			description = $(this).parent().children('.description').text();
+			
+//			postToFeed(link, picture, name, caption, description);
+
+			postToFeed(link);
+			
+			return false;
+			
+		});
+		
+		function postToFeed(link, picture, name, caption, description) {
+		
+			// calling the API ...
+			var obj = {
+				method: 'feed',
+				link: link,
+				picture: picture,
+				name: name,
+				caption: caption,
+				description: description
+			};
+			
+			function callback(response) {
+				//document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+			}
+			
+			FB.ui(obj, callback);
+		}
+	
+	});
+	
+	</script>
+	
+</head>
+<body data-spy="scroll" data-target="#instructions" data-offset="100">
+<!--	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	
+	</script>-->
+	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '358270934264431', // App ID
+	      channelUrl : '//localhost:8888/channel.html', // Channel File
+	      status     : true, // check login status
+	      cookie     : true, // enable cookies to allow the server to access the session
+	      xfbml      : true,  // parse XFBML
+	    });
+	
+	     //Additional initialization code here
+	  };
+	
+	   //Load the SDK Asynchronously
+	  (function(d){
+	     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement('script'); js.id = id; js.async = true;
+	     js.src = "//connect.facebook.net/en_US/all.js";
+	     ref.parentNode.insertBefore(js, ref);
+	   }(document));
+	</script>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"><img class="logo" src="images/logo_white.png" alt="Ask Around the World" /></a>
+				<a class="signup pull-right" href="#mc_embed_signup"><i class="icon-pencil icon-white"></i> Join the conversation revolution</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="about.html">About</a></li>
+						<li><a href="faq.html">FAQ</a></li>						
+					</ul>
+					
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="socialbar">
+		<div class="container">
+		<a href="#mc_embed_signup" class="subbrand">An AskVote.com initiative</a>
+			<div class="pull-right">
+				<!--<fb:like send="false" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>-->
+				<!--<div class="fb-like" data-href="http://www.askaroundtheworld.org/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>-->
+				<a href="#" data-link="http://www.askaroundtheworld.org/" class="facebookshare"><img src="images/facebooksharebutton.png" alt="Share on Facebook" /></a>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
+				</div>
+			</div>
+		</div>
+
+	<div class="container main">
+			<div class="row-fluid">
+
+					<section class="hero-unit center">
+						<h1>If you could ask just one question, what would it be?</h1>
+						<h2>Ask the one question that you think is the most important in the world. </h2>
+						
+					</section>
+		
+		
+					<section id="uploadvideos" class="center">
+						<a class="upload-button" data-toggle="collapse" href="#uploadFrame">
+							<i class="white-cam"></i><h2> UPLOAD/RECORD</h2></a>
+						
+						<section id="uploadFrame" class="collapse center">
+							<div class="inner">	
+								<p>It’s question time! You’re about the upload a question to Ask Around the World. Doing this works best if you’re using the Chrome browser, but should also work using Firefox, Safari and the latest version of Explorer. </p>
+								<p>The webcam recorder will function best with up to date versions of Adobe Flash and your webcam's firmware. You will need a Google/YouTube account to ask your question. Most Google accounts are automatically linked with YouTube, but some older or business accounts may require authorisation at <a href="http://www.youtube.com" target="_blank">youtube.com</a>.</p>
+								<p> If you're having trouble with the uploader, you can also post a question as a video response to the <a href="http://www.youtube.com/user/AskAroundtheWorldorg" target="_blank">Ask Around the World YouTube channel</a>.</p>
+								<iframe width="100%" height="450" src="http://www.askaroundtheworld.org/youtube-direct-lite2/static/index.html#playlist=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui">
+								</iframe>
+							</div>
+						</section>
+						<p>Why submit? Well, it's for a good cause. For every video we publish, Ask Around the World will donate US$1 to a range of <a href='faq.html#charity'>global aid organisations</a>. We’ll also choose our favourite 10 submissions and donate a further US$200 on behalf of each.</p>
+						</section>
+						
+			
+			<section id="youtube">
+				<h2>So, what next?</h2>
+				<ul class="first-element">
+				<li><strong>Check out</strong> the videos below. See what other people are asking.</li>
+				<li><strong>Share it.</strong> Like it. Tweet it. Make sure everyone's voice from around the world is heard.</li>
+				<li><strong>Learn More.</strong> This project is an AskVote.com initiative. <a href="#connect">Join the conversation revolution</a>.</li>
+			</ul>
+			
+				
+				<div class="feature"></div>
+				<ul id="thumbs">
+				</ul>				
+			</section>
+		</div>
+	</div>
+	
+		<footer class="footer">
+			  <div class="container">
+						<div class="row-fluid">
+					<div class='span3'>
+								<a class="brand" href="#"><img class="logo" src="images/AskVote_logo.png" />
+								</a>
+							</div>
+						<div class='span6'>
+							<h2>What's that?</h2>
+							<p>Ask Around the World is an AskVote.com initiative.</p>
+							<p>AskVote.com is the next generation of online conversation.</p>
+							<p><strong>WHAT</strong>:  an ever-evolving platform for better conversation<br />
+							<strong>WHY</strong>:  meaningful dialogue is the key to mutual understanding<br />
+							<strong>HOW</strong>:  question everything, including yourself</p>
+						</div>
+						
+						<div class="span2">
+							<ul id="connect">
+								<h2>Connect</h2>
+								<li><a href="mailto:info@askaroundtheworld.org/"><i class="social-email"></i> email</a>
+								<li><a href="http://www.facebook.com/AskVotedotcom"><i class="social-facebook"></i> facebook</a>
+								<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
+								<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
+						</div>
+					</div>
+					<hr />
+					<div class="row-fluid">
+						<div id="mc_embed_signup">
+							<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+								<div class="span4 offset3">
+									<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+									<input type="submit" class="upload-button" value="Keep me posted" name="subscribe" id="mc-embedded-subscribe" class="button">
+								</div>
+								<div class='span5'>
+									<label for="mce-EMAIL"><p>Add your email to AskVote.com and be the first to join the conversation revolution.</p></label>
+								</div>
+							</form>
+					</div>
+				</div>
+		 </div>   
+		</footer>
+	
+	<!--Bootstrap Script-->
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-affix.js"></script>
+
+	<!--jquerybbq Script-->
+	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+	
+	<script type="text/javascript">
+		
+		$('#instructions ul li a').click(function(event) {
+			event.preventDefault
+		})
+			
+			var offset = 100;
+
+			$('#instructions ul li a').click(function(event) {
+				event.preventDefault();
+				$($(this).attr('href'))[0].scrollIntoView();
+				scrollBy(0, -offset);
+			});
+			
+
+		
+		var $window = $(window)
+		$('.subnav').affix({
+			  offset: {
+				top: function () { return $window.width() <= 980 ? 320 : 255 }
+			  , bottom: 280
+			  }
+			})
+	</script>
+
+</body>
+</html>

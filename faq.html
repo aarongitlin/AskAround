@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+	<title>Ask Around</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="css/index.css" />
+	<meta content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." name="description">
+	<meta property="og:title" content="Ask Around the World" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.askaroundtheworld.org" />
+	<meta property="og:image" content="images/logo_blue.jpg" />
+	<meta property="og:description" content="If you could ask just one question, what would it be? Ask the one question that you think is the most important in the world." />
+	<meta property="og:site_name" content="Ask Around the World" />
+	<meta property="fb:admins" content="32700800" />
+	<link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
+	
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/third-party/lscache.js"></script>
+	<script type="text/javascript" src="js/third-party/parseUri.js"></script>
+	<script type="text/javascript" src="js/third-party/require-jquery.js" data-main="js/main"></script>
+	
+
+
+	<script type="text/javascript" src="js/jPaginate.js"></script>
+	<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+	<!-- widgets from sharthis.com 
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({
+		publisher: "61e05f94-8b10-49c1-a2f7-4853ab4a3c98",
+		newOrZero:"zero"
+		}); 
+	</script>-->
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		// to get the playlist url https://gdata.youtube.com/feeds/api/users/userId/playlists?v=2
+		// change orderby: https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#orderbysp
+		//var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/7E95C5FA9C85F48E?v=2&alt=json&orderby=published&callback=?';
+		var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui?v=2&alt=json&callback=?';
+		var videoURL= 'http://www.youtube.com/watch?v=';
+		$.getJSON(playListURL, function(data) {
+			
+			// get the first video from the playlist and put it in .feature
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				if(i>0){return;}
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				var url = videoURL + videoID;
+				list_data += '<iframe id="mainvideoplayer" width="750" height="400" src="http://www.youtube.com/embed/'+ videoID +'" frameborder="0" allowfullscreen></iframe>';
+				
+			});
+			$(list_data).appendTo(".feature");
+			
+			//testing changing the iframe src
+			//$('#mainvideoplayer').attr('src', 'http://www.youtube.com/embed/zX9HpsCVC9s');
+			
+			// get all the playlist video thumbnails and put it in .thumbs
+			var list_data="";
+			$.each(data.feed.entry, function(i, item) {
+				var feedTitle = item.title.$t;
+				var feedURL = item.link[1].href;
+				var fragments = feedURL.split("/");
+				var videoID = fragments[fragments.length - 2];
+				//var url = videoURL + videoID;
+				var embedsrc = 'http://www.youtube.com/embed/'+videoID+'?autoplay=1&rel=0&wmode=transparent';
+				// different sizes for video thumbs: default, hqdefault, mqdefault
+				var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
+				list_data += '<li><a href="'+ embedsrc +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
+			});
+			$(list_data).appendTo("#thumbs");
+			
+			//when thumbnails are clicked, change the src of the #mainvideoplayer to the href of the thumb and then return false
+			$('ul#thumbs li a').click(function() {
+				var embedsrc = $(this).attr('href');
+				$('#mainvideoplayer').attr('src', embedsrc);
+				//$('#mainvideoplayer').play();
+				return false;
+			});
+			
+			//Pagination
+			
+			$("#thumbs").jPaginate({items: 12, minimize: true, nav_items: 4, cookies: false});
+			
+			
+		});
+	
+	});
+	
+	</script>
+	
+</head>
+<body data-spy="scroll" data-target="#instructions" data-offset="100">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"><img class="logo" src="images/logo_white.png" alt="Ask Around the World" /></a>
+				<a class="signup pull-right" href="#mc_embed_signup"><i class="icon-pencil icon-white"></i> Join the conversation revolution</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a href="about.html">About</a></li>
+						<li><a href="faq.html">FAQ</a></li>						
+					</ul>
+					
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="socialbar">
+		<div class="container">
+		<a href="#mc_embed_signup" class="subbrand">An AskVote.com initiative</a>
+			<div class="pull-right">
+				<fb:like send="false" href="http://www.facebook.com/AskVotedotcom" layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="Ask_Vote" data-hashtags="askaroundtheworld">Tweet</a>
+				<a href="https://twitter.com/Ask_Vote" class="twitter-follow-button" data-show-count="false">Follow @Ask_Vote</a>
+				</div>
+			</div>
+		</div>
+
+		<nav id="instructions" class="subnav">
+      <ul class="nav nav-list">
+	        <li><a href="#what"><i class="icon-chevron-right"></i> What question?</a></li>
+	        <li><a href="#why"><i class="icon-chevron-right"></i> Why submit?</a></li>
+	        <li><a href="#answers"><i class="icon-chevron-right"></i> Answers?</a></li>
+	        <li><a href="#publishing"><i class="icon-chevron-right"></i> Publishing?</a></li>
+					<li><a href="#charity"><i class="icon-chevron-right"></i> Charities?</a></li>
+	        <li><a href="#creativity"><i class="icon-chevron-right"></i> Creativity?</a></li>
+	        
+			</ul>
+		</nav>
+
+	<div class="container main about">
+			<div class="row-fluid">
+		
+					<section class="hero-unit center">
+						<h1>Still got some questions for us?</h1>
+						<p>Don't worry, we're all about questions. Please contact us if you have more.</p>
+					</section>
+					
+					<section id="what">
+						<hr />
+						<h2> What kind of question should I ask?</h2>
+						<p>You can ask whatever you want. We like questions that are deep and meaningful and truly important. Please keep in mind that we prefer if you ask questions that require a YES or NO response and rationale.</p>
+						<p>For example: </p>
+						<blockquote><em>Would there be less war without religion? </em><i class="yesno-yes"></i>
+						<p>This is a good question that requires a YES or NO response and rationale.</p></blockquote>
+						<p>If, however, you ask:</p>
+						<blockquote><em>What do you think of religion </em><i class="yesno-no"></i>
+						<p>You're not exactly on the right path of getting a YES or NO response.</p></blockquote>
+					</section>
+					
+					<section id="why">
+						<hr />
+						<h2> What's the point of all of this?</h2>
+						<p>Many people have never ever thought to ask themselves what's the single most important question in the world. Ask Around the World is a catalyst to make people think. Secondly, it's a place to listen and learn about what's important to other people around the planet.</p>
+					</section>
+					
+					<section id="answers">
+						<hr />
+						<h2>Will someone answer my question?</h2>
+						<p>Nobody will answer every question posted on the site. Ask Around the World is, however, an initiative of AskVote.com, an online platform for asking questions and engaging in intelligent debate. AskVote.com is the next generation of online conversation. <a href="mc_embed_signup">Click here</a> to register and be one of the first to take part in this exciting project.</p>
+					</section>
+					
+					<section id="publishing">
+						<hr />
+						<h2>Will my question be published?</h2>
+						<p>We reserve the right to approve or not approve each submission on a case-by-case basis. There's no guarantee that your video will make the cut, so try to ask a good question and try to have fun and be creative.</p>
+						
+					</section>
+					
+					<section id="charity">
+						<hr />
+						<h2> What charities will the money go to?</h2>
+						<p>For every video we publish, Ask Around the World will donate US$1 to the following global aid organisations: <a href="http://www.oxfam.org/" target="_blank">Oxfam</a>, <a href="http://www.savethechildren.org/" target="_blank">Save the Children</a> and <a href="http://www.msf.org/" target="_blank">Médecins Sans Frontières</a>.</p>
+						<p>Ask Around the World will also contact 10 people whose videos we like the best and, on their behalf, donate and additional US$200 each to the charities of their choice.</p>
+					</section>
+					
+						<section id="creativity">
+							<hr />
+							<h2> Do you want creative videos?</h2>
+							<p>We love entries that have lots of personality and that might show interesting things in the background. If you're in Italy you might ask your question with the Colosseum behind you. In southern Africa, it could be an elephant in the frame. It could be with friends from school, university or work. It could involve silly props and funny interpretive dancing.  We'd love a deep and meaningful question from a talking bird. Feel free to be serious or to have fun with your short video question (10 seconds or less). Just provide us with a snapshot of where you live.</p>
+						</section>
+					
+					
+				</div>
+		</div> <!--end container-->
+	
+		<footer class="footer">
+		      <div class="container">
+						<div class="row-fluid">
+		        	<div class='span3'>
+								<a class="brand" href="#"><img class="logo" src="images/AskVote_logo.png" />
+								</a>
+							</div>
+						<div class='span6'>
+							<h2>What's that?</h2>
+							<p>Ask Around the World is an AskVote.com initiative.</p>
+							<p>AskVote.com is the next generation of online conversation.</p>
+							<p><strong>WHAT</strong>: an ever-evolving platform for better conversation<br />
+							<strong>WHY</strong>: meaningful dialogue is the key to mutual understanding<br />
+							<strong>HOW</strong>: question everything, including yourself</p>
+						</div>
+						
+						<div class="span2">
+							<ul id="connect">
+								<h2>Connect</h2>
+								<li><a href="mailto:info@askaroundtheworld.org/"><i class="social-email"></i> email</a>
+								<li><a href="http://www.facebook.com/AskVotedotcom"><i class="social-facebook"></i> facebook</a>
+								<li><a href="https://twitter.com/Ask_Vote"><i class="social-twitter"></i> twitter</a>
+								<li><a href="http://www.youtube.com/playlist?list=PLbsitDIQB3hwp5eVsPP4n4RPUSPWQR2Ui"><i class="social-youtube"></i> youtube</a>
+						</div>
+					</div>
+					<hr />
+					<div class="row-fluid">
+						<div id="mc_embed_signup">
+							<form action="http://usandthemstudios.us2.list-manage.com/subscribe/post?u=7ce3dd56df916186530517838&amp;id=ed569e77de" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+								<div class="span4 offset3">
+									<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+									<input type="submit" class="upload-button" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+								</div>
+								<div class='span5'>
+									<label for="mce-EMAIL"><p>Subscribe to AskVote.com to join the conversation revolution.</p></label>
+								</div>
+							</form>
+					</div>
+				</div>
+		 </div>   
+		</footer>
+	
+	<!--Bootstrap Script-->
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-affix.js"></script>
+	
+<script type="text/javascript">
+	
+	$('#instructions ul li a').click(function(event) {
+		event.preventDefault
+	})
+		
+		var offset = 100;
+
+		$('#instructions ul li a').click(function(event) {
+		    event.preventDefault();
+		    $($(this).attr('href'))[0].scrollIntoView();
+		    scrollBy(0, -offset);
+		});
+		
+
+	
+	var $window = $(window)
+	$('.subnav').affix({
+	      offset: {
+	        top: function () { return $window.width() <= 980 ? 320 : 255 }
+	      , bottom: 280
+	      }
+	    })
+</script>
+</body>
+</html>
