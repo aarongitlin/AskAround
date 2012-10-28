@@ -22,6 +22,6 @@ requirejs([
   auth.initAuth();
 
   $(function() {
-    load.onLoad('upload');
+    load.onLoad('blank');
   });
 });
