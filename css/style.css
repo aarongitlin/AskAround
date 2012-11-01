@@ -139,13 +139,15 @@ a.signup:hover {
     height: 18px;
     max-width: 98%;
     overflow: hidden;
-    padding: 3px 6px;
+    padding: 4px 6px 2px;
     position: relative;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    top: 1px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    top: 2px;
     vertical-align: text-top;
     white-space: nowrap;
     outline: medium none;
+    font-family: helvetica;
+    font-size: 11px;
 }
 .facebookshare:hover, .facebookshare:active, .facebookshare:focus {
     background-color: #F8F8F8;
@@ -159,7 +161,7 @@ a.signup:hover {
     border: 1px solid #0089CB;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
 }
-i.sp_like_send {
+.sp_like-send {
   background-position: 0 0px;
   background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Q8FTZ0iJJF2.png");
   background-repeat: no-repeat;
