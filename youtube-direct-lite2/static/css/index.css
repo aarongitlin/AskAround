@@ -44,15 +44,27 @@ a {
 }
 
 #message {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  background-color: rgba(249, 237, 190, 0.9);
-  padding: 5px;
-  width: 250px;
-  margin-left: -125px;
-  text-align: center;
+  background-color: #F6F6F6;
+  border: 3px solid #00A0DC;
+  border-radius: 3px 3px 3px 3px;
   cursor: pointer;
+  height: 150px;
+  left: 50%;
+  margin-left: -40%;
+  padding: 10px;
+  position: fixed;
+  text-align: left;
+  top: 15px;
+  width: 75%;
+  z-index: 2;
+  font-family: "varela", sans-serif;
+  font-size: 1.2em;
+  line-height: 1.6em;
+  box-shadow: 0 0 14px gray;
+  -moz-box-shadow: 0 0 14px gray;
+  -webkit-box-shadow: 0 0 14px gray;
+  -o-box-shadow: 0 0 14px gray;
+  
 }
 
 #tabs {
@@ -70,9 +82,14 @@ a {
   text-align: center;
 }
 #tabs > li {
-  margin: auto;
+  font-family: "varela", sans-serif;
 }
-
+.btn-group > .btn:first-child {
+  margin-right: 2px;
+}
+.btn-group > .btn:last-child {
+  margin-left: 2px;
+}
 .panel {
   margin: 5px;
 }

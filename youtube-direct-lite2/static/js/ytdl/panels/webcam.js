@@ -39,7 +39,7 @@ define(['jquery', '../utils', '../constants', '../globals', '../config'], functi
             event.target.setVideoKeywords([utils.generateKeywordFromPlaylistId(globals.hashParams.playlist)]);
           },
           onUploadSuccess: function(event) {
-            utils.showMessage('Thank you for recording your question. The Ask Around the World team will review your submission shortly and, if we think it’s worthy, post it to the site soon after. Don’t forget to share your question with your friends, family and colleagues. Thanks again!');
+            utils.showMessage('<p>Thank you for recording your question. The Ask Around the World team will review your submission shortly and, if we think it’s worthy, post it to the site soon after. Don’t forget to share your question with your friends, family and colleagues. Thanks again!</p><hr/><small> Click to close this window</small>');
 
             window._gaq.push(['_trackEvent', 'Submission', 'Webcam', 'Success']);
           },
