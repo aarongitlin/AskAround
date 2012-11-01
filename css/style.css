@@ -127,8 +127,49 @@ a.signup:hover {
 	margin-left: -20px;
 	position: relative;
 }
-
-
+.facebookshare {
+    -moz-user-select: none;
+    background-color: #F8F8F8;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #DEDEDE);
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    cursor: pointer;
+    font-weight: bold;
+    height: 18px;
+    max-width: 98%;
+    overflow: hidden;
+    padding: 3px 6px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    top: 1px;
+    vertical-align: text-top;
+    white-space: nowrap;
+    outline: medium none;
+}
+.facebookshare:hover, .facebookshare:active, .facebookshare:focus {
+    background-color: #F8F8F8;
+    background-image: -moz-linear-gradient(center top , #F8F8F8, #D9D9D9);
+    border-color: #BBBBBB;
+    box-shadow: none;
+    text-decoration: none;
+}
+.facebookshare:active {
+    background-color: #EFEFEF;
+    border: 1px solid #0089CB;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+i.sp_like_send {
+  background-position: 0 0px;
+  background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Q8FTZ0iJJF2.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin-right: 3px;
+  position: relative;
+  top: 3px;
+}
 /* Hero Unit & Uploader
 -------------------------------------------------- */
 
